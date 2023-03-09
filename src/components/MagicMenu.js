@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Authorized } from "./auth/Authorized";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
+import { NavBar } from "./nav/NavBar";
 import { ApplicationViews } from "./views/ApplicationViews";
 
 export const MagicMenu = () => {
@@ -15,6 +16,7 @@ export const MagicMenu = () => {
           element={
             <Authorized>
             <>
+            <NavBar />
               <ApplicationViews />
             </>
             </Authorized>

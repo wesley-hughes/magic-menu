@@ -1,23 +1,19 @@
-export const CustomerNav = () => {
+import { Link, useNavigate } from "react-router-dom"
+
+export const NavBar = () => {
     const navigate = useNavigate()
 
-    const localKandyUser = localStorage.getItem("kandy_user")
-    const kandyUserObject = JSON.parse(localKandyUser)
+    const localMagicUser = localStorage.getItem("magic_user")
+    const magicUserObject = JSON.parse(localMagicUser)
 
 
     return (
         <ul className="navbar">
-            <li className="locationButton navbar__item"><button onClick={() => navigate("locations")}>Show Locations</button></li>
-            <li className="navbar__products navbar__item">
-                <Link className="navbar__link" to="/product/search">Find Candy</Link>
-            </li>
-                <li className="navbar__purchases navbar__item">
-                <Link className="navbar__link" to="/purchases">My Orders</Link>
-            </li>
-            <li className="navbar__item navbar__logout">
+            <li className=""><button onClick={() => navigate("/menu")}>Menu</button></li>
+            <li className="">
                 <Link className="navbar__link" to="" onClick={() => {
-                    localStorage.removeItem("kandy_user")
-                    navigate("/", { replace: true })
+                    localStorage.removeItem("magic_user")
+                    navigate("/")
                 }}>Logout</Link>
             </li>
         </ul>
