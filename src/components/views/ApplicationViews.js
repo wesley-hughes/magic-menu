@@ -5,7 +5,7 @@ export const ApplicationViews = () => {
   return (
     <Routes>
       <Route path="/" element={<Outlet />}>
-        <Route path="/dayMenu" element={<DayMenu />} />
+        <Route path="/menu" element={<DayMenu />} />
       </Route>
     </Routes>
   );
