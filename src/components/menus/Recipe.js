@@ -1,3 +1,8 @@
-export const Recipe = () => {
-    
+export const Recipe = ({breakfast}) => {
+
+    return (
+        <>
+        <div>{}</div>
+        </>
+    )
 }
