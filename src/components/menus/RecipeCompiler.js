@@ -17,7 +17,7 @@ export const RecipeCompiler = () => {
 
   const localMagicUser = localStorage.getItem("magic_user");
   const magicUserObject = JSON.parse(localMagicUser);
-  const userId = magicUserObject.userId
+  const userId = parseInt(magicUserObject.userId)
   
   useEffect(() => {
     getUser(userId).then((data) => setUser(data[0]))
