@@ -1,8 +1,8 @@
-// export const getRecipes = () => {
-//   return fetch(`
-//     http://localhost:8088/recipes
-//     `).then((res) => res.json());
-// };
+export const getAllRecipes = () => {
+  return fetch(`
+    http://localhost:8088/recipes
+    `).then((res) => res.json());
+};
 
 export const postMenu = (weekToSendToApi) => {
   return fetch(`http://localhost:8088/menus`, {
@@ -15,7 +15,7 @@ export const postMenu = (weekToSendToApi) => {
 };
 
 export const getMenus = (userId) => {
-  return fetch(`http://localhost:8088/menus?userId="${userId}"`).then((res) =>
+  return fetch(`http://localhost:8088/menus?userId=${userId}`).then((res) =>
     res.json()
   );
 };
@@ -24,10 +24,9 @@ export const getUser = (userId) => {
   return fetch(`
     http://localhost:8088/users/?userId=${userId}
    `).then((res) => res.json());
-}
+};
 
 export const getRecipes = (user) => {
-  
   if (user.vegetarian === true) {
     return fetch(`
   http://localhost:8088/recipes/?vegetarian=true`).then((res) => res.json());
@@ -44,5 +43,5 @@ export const getRecipes = (user) => {
     return fetch(`
   http://localhost:8088/recipes
   `).then((res) => res.json());
-  } 
+  }
 };
