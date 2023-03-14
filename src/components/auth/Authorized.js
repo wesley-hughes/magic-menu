@@ -1,13 +1,15 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom"
 
 export const Authorized = ({ children }) => {
+  const location = useLocation()
 
   if (localStorage.getItem("magic_user")) {
-    return children;
-  } else {
-    return (
-      <Navigate to={`/login/`}
-      />
-    );
+      return children
   }
-};
+  else {
+      return <Navigate
+          to={`/login/${location.search}`}
+          replace
+          state={{ location }} />
+  }
+}

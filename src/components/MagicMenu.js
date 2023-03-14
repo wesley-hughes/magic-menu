@@ -15,10 +15,10 @@ export const MagicMenu = () => {
           path="*"
           element={
             <Authorized>
-            <>
-            <NavBar />
-              <ApplicationViews />
-            </>
+              <>
+                <NavBar />
+                <ApplicationViews />
+              </>
             </Authorized>
           }
         />
