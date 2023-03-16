@@ -99,20 +99,27 @@ export const WeekBuilder = ({
 
   return (
     <>
+    <div className="p-2 m-5 border-2 rounded-xl ">
       <form className="">
-        <h2 className="">New Week Menu</h2>
-        <fieldset>
-          <input onChange={(event) => {
+        <h2 className="text-slate-700 text-2xl font-bold">New Week Menu</h2>
+        <fieldset className="border-2 rounded-2xl bg-slate-100 m-2 w-[300px] text-lg text-center">
+        <label className="font-semibold text-left mr-2 text-slate-700" htmlFor="date">Date:</label>
+          <input className="text-purple-500 bg-slate-100 text-center"
+          onChange={(event) => {
             let copy = {...date}
             copy= event.target.value
             setDate(copy)
           }} type="date"></input>
         </fieldset>
-        <fieldset>
-          <div className="">
-            <label htmlFor="sunday">Sunday:</label>
+        <div className="flex flex-row items-center">
 
-            <div value={sundayRecipe}>
+
+
+        <fieldset>
+          <div className="w-[190px] h-[170px] flex flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+            <label className="text-purple-600 font-semibold" htmlFor="sunday">Sunday:</label>
+
+            <div className="my-1" value={sundayRecipe}>
               <Link onClick={() => setSunModal(true)}>
                 {sundayRecipe?.title}
               </Link>
@@ -120,117 +127,122 @@ export const WeekBuilder = ({
 
             <button
               onClick={(event) => handleSundayClick(event, recipes)}
-              className=""
+              className="glow-on-hover"
             >
               Reset
             </button>
           </div>
         </fieldset>
 
+
+
+
         <fieldset>
-          <div className="">
-            <label htmlFor="monday">Monday:</label>
-            <div value={mondayRecipe}>
+          <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+            <label className="text-purple-600 font-semibold" htmlFor="monday">Monday:</label>
+            <div className="my-1" value={mondayRecipe}>
               <Link onClick={() => setMonModal(true)}>
                 {mondayRecipe?.title}
               </Link>
             </div>
             <button
               onClick={(event) => handleMondayClick(event, recipes)}
-              className=""
+              className="glow-on-hover"
             >
               Reset
             </button>
           </div>
         </fieldset>
         <fieldset>
-          <div className="">
-            <label htmlFor="tuesday">Tuesday:</label>
-            <div value={tuesdayRecipe}>
+          <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+            <label className="text-purple-600 font-semibold" htmlFor="tuesday">Tuesday:</label>
+            <div className="my-1" value={tuesdayRecipe}>
               <Link onClick={() => setTueModal(true)}>
                 {tuesdayRecipe?.title}
               </Link>
             </div>
             <button
               onClick={(event) => handleTuesdayClick(event, recipes)}
-              className=""
+              className="glow-on-hover"
             >
               Reset
             </button>
           </div>
         </fieldset>
         <fieldset>
-          <div className="">
-            <label htmlFor="wednesday">Wednesday:</label>
-            <div value={wednesdayRecipe}>
+          <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+            <label className="text-purple-600 font-semibold" htmlFor="wednesday">Wednesday:</label>
+            <div className="my-1" value={wednesdayRecipe}>
               <Link onClick={() => setWedModal(true)}>
                 {wednesdayRecipe?.title}
               </Link>
             </div>
             <button
               onClick={(event) => handleWednesdayClick(event, recipes)}
-              className=""
+              className="glow-on-hover"
             >
               Reset
             </button>
           </div>
         </fieldset>
         <fieldset>
-          <div className="">
-            <label htmlFor="thursday">Thursday:</label>
-            <div value={thursdayRecipe}>
+          <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+            <label className="text-purple-600 font-semibold" htmlFor="thursday">Thursday:</label>
+            <div className="my-1" value={thursdayRecipe}>
               <Link onClick={() => setThuModal(true)}>
                 {thursdayRecipe?.title}
               </Link>
             </div>
             <button
               onClick={(event) => handleThursdayClick(event, recipes)}
-              className=""
+              className="glow-on-hover"
             >
               Reset
             </button>
           </div>
         </fieldset>
         <fieldset>
-          <div className="">
-            <label htmlFor="friday">Friday:</label>
-            <div value={fridayRecipe}>
+          <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+            <label className="text-purple-600 font-semibold" htmlFor="friday">Friday:</label>
+            <div className="my-1" value={fridayRecipe}>
               <Link onClick={() => setFriModal(true)}>
                 {fridayRecipe?.title}
               </Link>
             </div>
             <button
               onClick={(event) => handleFridayClick(event, recipes)}
-              className=""
+              className="glow-on-hover"
             >
               Reset
             </button>
           </div>
         </fieldset>
         <fieldset>
-          <div className="">
-            <label htmlFor="saturday">Saturday:</label>
-            <div value={saturdayRecipe}>
+          <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+            <label className="text-purple-600 font-semibold" htmlFor="saturday">Saturday:</label>
+            <div className="my-1" value={saturdayRecipe}>
               <Link onClick={() => setSatModal(true)}>
                 {saturdayRecipe?.title}
               </Link>
             </div>
             <button
               onClick={(event) => handleSaturdayClick(event, recipes)}
-              className=""
+              className="glow-on-hover"
             >
               Reset
             </button>
           </div>
         </fieldset>
+        </div>
 
-        <button onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}>
+        <button className="glow-on-hover mx-1 my-2" onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}>
           Save Menu
         </button>
-        <button onClick={() => navigate("/menu")} className="">
+        <button className="glow-on-hover mx-1 my-2" onClick={() => navigate("/menu")}>
           Refresh
         </button>
       </form>
+      </div>
       <SundayModal
         onClose={handleSunClose}
         sundayRecipe={sundayRecipe}
@@ -266,6 +278,7 @@ export const WeekBuilder = ({
         saturdayRecipe={saturdayRecipe}
         visible={SatModal}
       />
+      
     </>
   );
 };

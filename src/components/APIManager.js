@@ -26,22 +26,9 @@ export const getUser = (userId) => {
    `).then((res) => res.json());
 };
 
-export const getRecipes = (user) => {
-  if (user.vegetarian === true) {
-    return fetch(`
-  http://localhost:8088/recipes/?vegetarian=true`).then((res) => res.json());
-  } else if (user.vegan === true) {
-    return fetch(`
-    http://localhost:8088/recipes/?vegan=true`).then((res) => res.json());
-  } else if (user.glutenFree === true) {
-    return fetch(`
-    http://localhost:8088/recipes/?glutenFree=true`).then((res) => res.json());
-  } else if (user.dairyFree === true) {
-    return fetch(`
-    http://localhost:8088/recipes/?dairyFree=true`).then((res) => res.json());
-  } else {
+export const getRecipes = () => {
     return fetch(`
   http://localhost:8088/recipes
   `).then((res) => res.json());
-  }
+  
 };

@@ -32,15 +32,16 @@ export const Profile = () => {
       body: JSON.stringify(user),
     })
       .then((response) => response.json())
-      .then(() => {});
+      .then(() => {navigate("/menu")});
+      
   };
 
   return (
-    <>
-      <form className="">
-        <h2 className="">User Preferences</h2>
+    <><h2 className="">User Preferences</h2>
+      <form className="flex flex-col p-5">
+        
         <fieldset>
-          <div className="">
+          <div className="my-2">
             <label htmlFor="email">Email:</label>
             <textarea
               type="text"
@@ -56,7 +57,7 @@ export const Profile = () => {
           </div>
         </fieldset>
         <fieldset>
-          <div>
+          <div className="my-2">
             <label htmlFor="vegetarian">Vegetarian</label>
             <br></br>
             <input
@@ -87,7 +88,7 @@ export const Profile = () => {
           </div>
         </fieldset>
         <fieldset>
-          <div>
+          <div className="my-2">
             <label htmlFor="vegan">Vegan</label>
             <br></br>
             <input
@@ -118,7 +119,7 @@ export const Profile = () => {
           </div>
         </fieldset>
         <fieldset>
-          <div>
+          <div className="my-2">
             <label htmlFor="glutenFree">Gluten Free</label>
             <br></br>
             <input
@@ -149,7 +150,7 @@ export const Profile = () => {
           </div>
         </fieldset>
         <fieldset>
-          <div>
+          <div className="my-2">
             <label htmlFor="dairyFree">Dairy Free</label>
             <br></br>
             <input
@@ -180,8 +181,9 @@ export const Profile = () => {
           </div>
         </fieldset>
         <button
+        
           onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-          className="btn btn-primary"
+          className="glow-on-hover"
         >
           Save Edits
         </button>
