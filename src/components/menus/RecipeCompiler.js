@@ -23,22 +23,21 @@ export const RecipeCompiler = () => {
     getRecipes().then((data) => setRecipes(data));
   }, []);
 
- 
-
   useEffect(() => {
+    let filtered = [...recipes];
     if (user.vegetarian) {
-      setFilteredRecipes(recipes.filter((recipe) => recipe.vegetarian));
+      filtered = recipes.filter((recipe) => recipe.vegetarian);
     }
     if (user.glutenFree) {
-      setFilteredRecipes(recipes.filter((recipe) => recipe.glutenFree));
+      filtered = filtered.filter((recipe) => recipe.glutenFree);
     }
     if (user.vegan) {
-      setFilteredRecipes(recipes.filter((recipe) => recipe.vegan));
+      filtered = filtered.filter((recipe) => recipe.vegan);
     }
     if (user.dairyFree) {
-      setFilteredRecipes(recipes.filter((recipe) => recipe.dairyFree));
+      filtered = filtered.filter((recipe) => recipe.dairyFree);
     }
-    else{setFilteredRecipes(recipes)}
+    setFilteredRecipes(filtered);
   }, [user, recipes]);
 
   // useEffect(() => {
@@ -54,41 +53,57 @@ export const RecipeCompiler = () => {
   //   }
   // }, [user, recipes]);
 
+  const getRecipeObject = (filteredRecipes) => {
+    let recipeObject = filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
+    return recipeObject
+  };
+
   useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setSundayRecipe(recipeObject);
+    setSundayRecipe(getRecipeObject(filteredRecipes));
+    setMondayRecipe(getRecipeObject(filteredRecipes));
+    setTuesdayRecipe(getRecipeObject(filteredRecipes));
+    setWednesdayRecipe(getRecipeObject(filteredRecipes));
+    setThursdayRecipe(getRecipeObject(filteredRecipes));
+    setFridayRecipe(getRecipeObject(filteredRecipes));
+    setSaturdayRecipe(getRecipeObject(filteredRecipes));
   }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setMondayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setTuesdayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setWednesdayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setThursdayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setFridayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setSaturdayRecipe(recipeObject);
-  }, [filteredRecipes]);
+
+  // useEffect(() => {
+  //   const recipeObject =
+  //     filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
+  //   setSundayRecipe(recipeObject);
+  // }, [filteredRecipes]);
+  // useEffect(() => {
+  //   const recipeObject =
+  //     filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
+  //   setMondayRecipe(recipeObject);
+  // }, [filteredRecipes]);
+  // useEffect(() => {
+  //   const recipeObject =
+  //     filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
+  //   setTuesdayRecipe(recipeObject);
+  // }, [filteredRecipes]);
+  // useEffect(() => {
+  //   const recipeObject =
+  //     filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
+  //   setWednesdayRecipe(recipeObject);
+  // }, [filteredRecipes]);
+  // useEffect(() => {
+  //   const recipeObject =
+  //     filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
+  //   setThursdayRecipe(recipeObject);
+  // }, [filteredRecipes]);
+  // useEffect(() => {
+  //   const recipeObject =
+  //     filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
+  //   setFridayRecipe(recipeObject);
+  // }, [filteredRecipes]);
+  // useEffect(() => {
+  //   const recipeObject =
+  //     filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
+  //   setSaturdayRecipe(recipeObject);
+  // }, [filteredRecipes]);
+
 
   const resetSunday = (filteredRecipes) => {
     const recipeObject =
@@ -146,9 +161,7 @@ export const RecipeCompiler = () => {
         resetSaturday={resetSaturday}
         recipes={filteredRecipes}
       ></WeekBuilder>
-      {/* <Reset key={`reset`} */}
-
-      ;
+      {/* <Reset key={`reset`} */};
     </>
   );
 };
