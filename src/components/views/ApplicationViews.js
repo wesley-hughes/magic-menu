@@ -3,6 +3,8 @@ import { WeekBuilder } from "../menus/WeekBuilder";
 import { RecipeCompiler } from "../menus/RecipeCompiler";
 import { WeekDisplay } from "../menus/WeekDisplay";
 import { Profile } from "../profiles/Profile";
+import { RecipeFilter } from "../menus/RecipeFilter";
+import { FavoritesDisplay } from "../favorites/FavoritesDisplay";
 
 export const ApplicationViews = () => {
   return (
@@ -21,9 +23,10 @@ export const ApplicationViews = () => {
           </>
         }
       >
-        <Route path="/menu" element={<RecipeCompiler />} />
+        <Route path="/menu" element={<RecipeFilter />} />
         <Route path="/recipe" element={<WeekBuilder />} />
         <Route path="/weeks" element={<WeekDisplay />} />
+        <Route path="/favorites" element={<FavoritesDisplay />} />
         <Route path="/profile" element={<Profile />} />
       </Route>
     </Routes>

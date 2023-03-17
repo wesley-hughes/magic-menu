@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { WeekBuilder } from "../menus/WeekBuilder";
+import { WeekDisplay } from "../menus/WeekDisplay";
 
 export const SundayModal = ({ visible, sundayRecipe, onClose }) => {
   const [ingredients, setIngredients] = useState([]);
@@ -53,7 +55,7 @@ export const SundayModal = ({ visible, sundayRecipe, onClose }) => {
           <p className="text-purple-500 font-semibold text-md">Prep Time: {sundayRecipe?.readyInMinutes} minutes</p>
           <div className="mt-4">
             <div>Vegetarian {isVegetarian()}</div>
-            <div>Vegean {isVegan()}</div>
+            <div>Vegan {isVegan()}</div>
             <div>Gluten Free {isGF()}</div>
             <div>Dairy Free {isDF()}</div>
           </div>
@@ -73,5 +75,7 @@ export const SundayModal = ({ visible, sundayRecipe, onClose }) => {
         </div>
       </div>
     </div>
+    
+
   );
 };
