@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
-import { getRecipes, getUser } from "../APIManager";
 import { WeekBuilder } from "./WeekBuilder";
 
-export const RecipeCompiler = () => {
-  const [user, setUser] = useState({});
-  const [recipes, setRecipes] = useState([]);
-  const [filteredRecipes, setFilteredRecipes] = useState([]);
+export const RecipeCompiler = ({filteredRecipes}) => {
   const [sundayRecipe, setSundayRecipe] = useState({});
   const [mondayRecipe, setMondayRecipe] = useState({});
   const [tuesdayRecipe, setTuesdayRecipe] = useState({});
@@ -14,80 +10,20 @@ export const RecipeCompiler = () => {
   const [fridayRecipe, setFridayRecipe] = useState({});
   const [saturdayRecipe, setSaturdayRecipe] = useState({});
 
-  const localMagicUser = localStorage.getItem("magic_user");
-  const magicUserObject = JSON.parse(localMagicUser);
-  const userId = parseInt(magicUserObject.userId);
+  const getRecipeObject = (filteredRecipes) => {
+    let recipeObject =
+      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
+    return recipeObject;
+  };
 
   useEffect(() => {
-    getUser(userId).then((data) => setUser(data[0]));
-    getRecipes().then((data) => setRecipes(data));
-  }, []);
-
- 
-
-  useEffect(() => {
-    if (user.vegetarian) {
-      setFilteredRecipes(recipes.filter((recipe) => recipe.vegetarian));
-    }
-    if (user.glutenFree) {
-      setFilteredRecipes(recipes.filter((recipe) => recipe.glutenFree));
-    }
-    if (user.vegan) {
-      setFilteredRecipes(recipes.filter((recipe) => recipe.vegan));
-    }
-    if (user.dairyFree) {
-      setFilteredRecipes(recipes.filter((recipe) => recipe.dairyFree));
-    }
-    else{setFilteredRecipes(recipes)}
-  }, [user, recipes]);
-
-  // useEffect(() => {
-  // }, [user, recipes]);
-  // useEffect(() => {
-  //   if (user.glutenFree) {
-  //     setFilteredRecipes(recipes.filter((recipe) => recipe.glutenFree));
-  //   }
-  // }, [user, recipes]);
-  // useEffect(() => {
-  //   if (user.dairyFree) {
-  //     setFilteredRecipes(recipes.filter((recipe) => recipe.dairyFree));
-  //   }
-  // }, [user, recipes]);
-
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setSundayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setMondayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setTuesdayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setWednesdayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setThursdayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setFridayRecipe(recipeObject);
-  }, [filteredRecipes]);
-  useEffect(() => {
-    const recipeObject =
-      filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-    setSaturdayRecipe(recipeObject);
+    setSundayRecipe(getRecipeObject(filteredRecipes));
+    setMondayRecipe(getRecipeObject(filteredRecipes));
+    setTuesdayRecipe(getRecipeObject(filteredRecipes));
+    setWednesdayRecipe(getRecipeObject(filteredRecipes));
+    setThursdayRecipe(getRecipeObject(filteredRecipes));
+    setFridayRecipe(getRecipeObject(filteredRecipes));
+    setSaturdayRecipe(getRecipeObject(filteredRecipes));
   }, [filteredRecipes]);
 
   const resetSunday = (filteredRecipes) => {
@@ -146,9 +82,7 @@ export const RecipeCompiler = () => {
         resetSaturday={resetSaturday}
         recipes={filteredRecipes}
       ></WeekBuilder>
-      {/* <Reset key={`reset`} */}
-
-      ;
+      {/* <Reset key={`reset`} */};
     </>
   );
 };

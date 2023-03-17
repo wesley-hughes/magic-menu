@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { getUser } from "../APIManager";
 
 export const Profile = () => {
   const navigate = useNavigate();
@@ -21,10 +22,139 @@ export const Profile = () => {
       });
   }, [userId]);
 
+  const handleVegetarianCheck = (event) => {
+    let copy = { ...user };
+    copy.vegetarian = event.target.checked;
+    assignUser(copy);
+  };
+
+  const checkboxVegetarian = (user) => {
+    if (user.vegetarian === true) {
+      return (
+        <input
+          type="checkbox"
+          id=""
+          value={true}
+          checked
+          onChange={(event) => {
+            handleVegetarianCheck(event);
+          }}
+        ></input>
+      );
+    } else {
+      return (
+        <input
+          type="checkbox"
+          id=""
+          value={false}
+          onChange={(event) => {
+            handleVegetarianCheck(event);
+          }}
+        ></input>
+      );
+    }
+  };
+  const handleVeganCheck = (event) => {
+    let copy = { ...user };
+    copy.vegan = event.target.checked;
+    assignUser(copy);
+  };
+
+  const checkboxVegan = (user) => {
+    if (user.vegan === true) {
+      return (
+        <input
+          type="checkbox"
+          id=""
+          value={true}
+          checked
+          onChange={(event) => {
+            handleVeganCheck(event);
+          }}
+        ></input>
+      );
+    } else {
+      return (
+        <input
+          type="checkbox"
+          id=""
+          value={false}
+          onChange={(event) => {
+            handleVeganCheck(event);
+          }}
+        ></input>
+      );
+    }
+  };
+  const handleGlutenFreeCheck = (event) => {
+    let copy = { ...user };
+    copy.glutenFree = event.target.checked;
+    assignUser(copy);
+  };
+
+  const checkboxGlutenFree = (user) => {
+    if (user.glutenFree === true) {
+      return (
+        <input
+          type="checkbox"
+          id=""
+          value={true}
+          checked
+          onChange={(event) => {
+            handleGlutenFreeCheck(event);
+          }}
+        ></input>
+      );
+    } else {
+      return (
+        <input
+          type="checkbox"
+          id=""
+          value={false}
+          onChange={(event) => {
+            handleGlutenFreeCheck(event);
+          }}
+        ></input>
+      );
+    }
+  };
+  const handleDairyFreeCheck = (event) => {
+    let copy = { ...user };
+    copy.dairyFree = event.target.checked;
+    assignUser(copy);
+  };
+
+  const checkboxDairyFree = (user) => {
+    if (user.dairyFree === true) {
+      return (
+        <input
+          type="checkbox"
+          id=""
+          value={true}
+          checked
+          onChange={(event) => {
+            handleDairyFreeCheck(event);
+          }}
+        ></input>
+      );
+    } else {
+      return (
+        <input
+          type="checkbox"
+          id=""
+          value={false}
+          onChange={(event) => {
+            handleDairyFreeCheck(event);
+          }}
+        ></input>
+      );
+    }
+  };
+
   const handleSaveButtonClick = (event) => {
     event.preventDefault();
 
-    return fetch(`http://localhost:8088/users/${user.id}`, {
+    fetch(`http://localhost:8088/users/${user.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -32,14 +162,20 @@ export const Profile = () => {
       body: JSON.stringify(user),
     })
       .then((response) => response.json())
-      .then(() => {navigate("/menu")});
-      
+      .then(() => {
+        fetch(`http://localhost:8088/users?id=${userId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const userObject = data[0];
+            assignUser(userObject);
+          });
+      });
   };
 
   return (
-    <><h2 className="">User Preferences</h2>
+    <>
+      <h2 className="">User Preferences</h2>
       <form className="flex flex-col p-5">
-        
         <fieldset>
           <div className="my-2">
             <label htmlFor="email">Email:</label>
@@ -59,129 +195,37 @@ export const Profile = () => {
         <fieldset>
           <div className="my-2">
             <label htmlFor="vegetarian">Vegetarian</label>
-            <br></br>
-            <input
-              type="radio"
-              id="vegetarian"
-              value={true}
-              onChange={(evt) => {
-                const copy = { ...user };
-                copy.vegetarian = evt.target.value;
-                assignUser(copy);
-              }}
-            ></input>
-            <label htmlFor="vegetarian">Yes</label>
+            {user ? checkboxVegetarian(user) : ""}
 
-            <div>
-              <input
-                type="radio"
-                id="notVegetarian"
-                value={false}
-                onChange={(evt) => {
-                  const copy = { ...user };
-                  copy.vegetarian = evt.target.value;
-                  assignUser(copy);
-                }}
-              ></input>
-              <label htmlFor="notVegetarian">No</label>
-            </div>
+            <br></br>
           </div>
         </fieldset>
         <fieldset>
           <div className="my-2">
-            <label htmlFor="vegan">Vegan</label>
-            <br></br>
-            <input
-              type="radio"
-              id="vegan"
-              value={true}
-              onChange={(evt) => {
-                const copy = { ...user };
-                copy.vegan = evt.target.value;
-                assignUser(copy);
-              }}
-            ></input>
-            <label htmlFor="vegan">Yes</label>
+            <label htmlFor="Vegan">Vegan</label>
+            {user ? checkboxVegan(user) : ""}
 
-            <div>
-              <input
-                type="radio"
-                id="notVegan"
-                value={false}
-                onChange={(evt) => {
-                  const copy = { ...user };
-                  copy.vegan = evt.target.value;
-                  assignUser(copy);
-                }}
-              ></input>
-              <label htmlFor="notVegan">No</label>
-            </div>
+            <br></br>
           </div>
         </fieldset>
         <fieldset>
           <div className="my-2">
-            <label htmlFor="glutenFree">Gluten Free</label>
-            <br></br>
-            <input
-              type="radio"
-              id="glutenFree"
-              value={true}
-              onChange={(evt) => {
-                const copy = { ...user };
-                copy.glutenFree = evt.target.value;
-                assignUser(copy);
-              }}
-            ></input>
-            <label htmlFor="glutenFree">Yes</label>
+            <label htmlFor="GlutenFree">GlutenFree</label>
+            {user ? checkboxGlutenFree(user) : ""}
 
-            <div>
-              <input
-                type="radio"
-                id="notGlutenFree"
-                value={false}
-                onChange={(evt) => {
-                  const copy = { ...user };
-                  copy.glutenFree = evt.target.value;
-                  assignUser(copy);
-                }}
-              ></input>
-              <label htmlFor="notGlutenFree">No</label>
-            </div>
+            <br></br>
           </div>
         </fieldset>
         <fieldset>
           <div className="my-2">
-            <label htmlFor="dairyFree">Dairy Free</label>
-            <br></br>
-            <input
-              type="radio"
-              id="dairyFree"
-              value={true}
-              onChange={(evt) => {
-                const copy = { ...user };
-                copy.dairyFree = evt.target.value;
-                assignUser(copy);
-              }}
-            ></input>
-            <label htmlFor="dairyFree">Yes</label>
+            <label htmlFor="DairyFree">DairyFree</label>
+            {user ? checkboxDairyFree(user) : ""}
 
-            <div>
-              <input
-                type="radio"
-                id="notDairyFree"
-                value={false}
-                onChange={(evt) => {
-                  const copy = { ...user };
-                  copy.dairyFree = evt.target.value;
-                  assignUser(copy);
-                }}
-              ></input>
-              <label htmlFor="notDairyFree">No</label>
-            </div>
+            <br></br>
           </div>
         </fieldset>
+
         <button
-        
           onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
           className="glow-on-hover"
         >
