@@ -52,14 +52,6 @@ export const NavBar = () => {
               </li>
               <li>
                 <button
-                  className="block py-2 pl-3 pr-4 text-purple-500 rounded font-bold hover:text-blue-500 hover:scale-105 "
-                  onClick={() => navigate("/favorites")}
-                >
-                  Favorites
-                </button>
-              </li>
-              <li>
-                <button
                   className="block py-2 pl-3 pr-4 text-purple-500 rounded font-bold hover:text-blue-500  hover:scale-105 "
                   onClick={() => navigate("/profile")}
                 >

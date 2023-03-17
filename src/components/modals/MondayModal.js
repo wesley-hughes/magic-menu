@@ -53,7 +53,7 @@ export const MondayModal = ({ visible, mondayRecipe, onClose }) => {
           <p className="text-purple-500 font-semibold text-md">Prep Time: {mondayRecipe?.readyInMinutes} minutes</p>
           <div className="mt-4">
             <div>Vegetarian {isVegetarian()}</div>
-            <div>Vegan {isVegan()}</div>
+            <div>Vegean {isVegan()}</div>
             <div>Gluten Free {isGF()}</div>
             <div>Dairy Free {isDF()}</div>
           </div>

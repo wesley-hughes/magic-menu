@@ -15,8 +15,8 @@ export const postMenu = (weekToSendToApi) => {
 };
 
 export const getMenus = (userId) => {
-  return fetch(`http://localhost:8088/menus?_sort=date&userId=${userId}`).then(
-    (res) => res.json()
+  return fetch(`http://localhost:8088/menus?userId=${userId}`).then((res) =>
+    res.json()
   );
 };
 
@@ -27,24 +27,8 @@ export const getUser = (userId) => {
 };
 
 export const getRecipes = () => {
-  return fetch(`
+    return fetch(`
   http://localhost:8088/recipes
   `).then((res) => res.json());
+  
 };
-
-export const getUserFavorites = (userId) => {
-  return fetch(`
-    http://localhost:8088/favorites?_expand=recipe&userId=${userId}  `).then(
-    (res) => res.json()
-  );
-};
-
-export const postFavorite = (newFavorite) => {
-  return fetch(`http://localhost:8088/favorites`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newFavorite),
-  }).then((response) => response.json());
-}
