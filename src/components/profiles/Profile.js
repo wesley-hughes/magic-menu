@@ -179,7 +179,7 @@ export const Profile = () => {
         <fieldset>
           <div className="my-2">
             <label htmlFor="email">Email:</label>
-            <textarea
+            <input
               type="text"
               value={user.email}
               onChange={(evt) => {
@@ -188,8 +188,7 @@ export const Profile = () => {
                 assignUser(copy);
               }}
             >
-              {user.email}
-            </textarea>
+            </input>
           </div>
         </fieldset>
         <fieldset>
@@ -227,7 +226,7 @@ export const Profile = () => {
 
         <button
           onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-          className="glow-on-hover"
+          className="glow-on-hover w-28"
         >
           Save Edits
         </button>
