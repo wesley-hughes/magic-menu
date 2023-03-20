@@ -51,12 +51,11 @@ export const WeekBuilder = ({
       fridayRecipe: fridayRecipe?.id,
       saturdayRecipe: saturdayRecipe?.id,
     };
-    
-        postMenu(weekToSendToApi).then(() => {
-        navigate("/menu");
-      });
-      window.alert("Menu Saved!");
-    
+
+    postMenu(weekToSendToApi).then(() => {
+      navigate("/menu");
+    });
+    window.alert("Menu Saved!");
   };
 
   const handleSundayClick = (event, recipes) => {
@@ -115,13 +114,13 @@ export const WeekBuilder = ({
                 copy = event.target.value;
                 setDate(copy);
               }}
-              type="date"   
-              defaultValue={"2023-01-01"}           
+              type="date"
+              defaultValue={"Select Starting Date"}
             ></input>
           </fieldset>
           <div className="flex flex-row items-center">
             <fieldset>
-              <div className="w-[190px] h-[170px] flex flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+              <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
                 <label
                   className="text-purple-600 font-semibold"
                   htmlFor="sunday"
@@ -271,19 +270,24 @@ export const WeekBuilder = ({
               </div>
             </fieldset>
           </div>
-
-          <button
-            className="glow-on-hover mx-1 my-2"
-            onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-          >
-            Save Menu
-          </button>
-          <button
-            className="glow-on-hover mx-1 my-2"
-            onClick={() => navigate("/menu")}
-          >
-            Refresh
-          </button>
+          <div>
+            <button
+              className="glow-on-hover mx-1 my-2"
+              onClick={() => navigate("/menu")}
+            >
+              Refresh
+            </button>
+            {date.length ? (
+              <button
+                className="glow-on-hover mx-1 my-2"
+                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+              >
+                Save Menu
+              </button>
+            ) : (
+             <div className="text-xs text-purple-500 font-bold italic"> To save, please first select starting date for menu.</div>
+            )}
+          </div>
         </form>
       </div>
       <SundayModal
