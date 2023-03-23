@@ -97,195 +97,195 @@ export const WeekBuilder = ({
 
   return (
     <>
-      <div className="p-2 m-5 border-2 rounded-xl ">
-        <form className="">
-          <h2 className="text-slate-700 text-2xl font-bold">New Week Menu</h2>
-          <fieldset className="border-2 rounded-2xl bg-slate-100 m-2 w-[300px] text-lg text-center">
+      <div className="pl-8 pr-8 pb-8  m-5 h-full">
+        <form>
+          <h2 className="text-purple-900 text-4xl font-bold leading-tight tracking-tight">Build your Menu</h2>
+          <fieldset className="border-2 rounded-2xl bg-blue-100 -ml-1 mt-2 pl-2 w-[230px] text-lg text-left">
             <label
-              className="font-semibold text-left mr-2 text-slate-700"
+              className=" text-left mr-2 text-purple-800"
               htmlFor="date"
             >
               Date:
             </label>
             <input
-              className="text-purple-500 bg-slate-100 text-center"
+              className="text-purple-600 bg-blue-100 text-center"
               onChange={(event) => {
                 let copy = { ...date };
                 copy = event.target.value;
-                setDate(copy);
+                let newCopy = new Date(copy)
+                newCopy=newCopy.toLocaleString('en-US', {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric", weekday: "short"})
+                setDate(newCopy);
               }}
               type="date"
-              defaultValue={"Select Starting Date"}
             ></input>
           </fieldset>
-          <div className="flex flex-row items-center">
+          <div className="flex flex-wrap mt-8 justify-center mx-auto w-[80%]">
             <fieldset>
-              <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+              <div className="w-[230px] h-[200px] m-2 bg-opacity-60 flex flex-col justify-between border-2 border-purple-300 rounded-2xl mx-2 p-2 bg-blue-100">
                 <label
-                  className="text-purple-600 font-semibold"
+                  className="text-purple-800 text-lg font-semibold"
                   htmlFor="sunday"
                 >
                   Sunday:
                 </label>
 
-                <div className="my-1" value={sundayRecipe}>
+                <div className="my-1 text-blue-500 underline" value={sundayRecipe}>
                   <Link onClick={() => setSunModal(true)}>
                     {sundayRecipe?.title}
                   </Link>
                 </div>
 
-                <button
+                <Link
                   onClick={(event) => handleSundayClick(event, recipes)}
-                  className="glow-on-hover"
                 >
-                  Reset
-                </button>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                </Link>
               </div>
             </fieldset>
 
             <fieldset>
-              <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+              <div className="w-[230px] h-[200px] m-2 bg-opacity-60 flex flex-col justify-between border-2 border-purple-300 rounded-2xl mx-2 p-2 bg-blue-100">
                 <label
-                  className="text-purple-600 font-semibold"
+                  className="text-purple-800 text-lg font-semibold"
                   htmlFor="monday"
                 >
                   Monday:
                 </label>
-                <div className="my-1" value={mondayRecipe}>
+                <div className="my-1 text-blue-500 underline" value={mondayRecipe}>
                   <Link onClick={() => setMonModal(true)}>
                     {mondayRecipe?.title}
                   </Link>
                 </div>
-                <button
+                <Link
                   onClick={(event) => handleMondayClick(event, recipes)}
-                  className="glow-on-hover"
                 >
-                  Reset
-                </button>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                </Link>
               </div>
             </fieldset>
             <fieldset>
-              <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+              <div className="w-[230px] h-[200px] m-2 bg-opacity-60 flex flex-col justify-between border-2 border-purple-300 rounded-2xl mx-2 p-2 bg-blue-100">
                 <label
-                  className="text-purple-600 font-semibold"
+                  className="text-purple-800 text-lg font-semibold"
                   htmlFor="tuesday"
                 >
                   Tuesday:
                 </label>
-                <div className="my-1" value={tuesdayRecipe}>
+                <div className="my-1 text-blue-500 underline" value={tuesdayRecipe}>
                   <Link onClick={() => setTueModal(true)}>
                     {tuesdayRecipe?.title}
                   </Link>
                 </div>
-                <button
+                <Link
                   onClick={(event) => handleTuesdayClick(event, recipes)}
-                  className="glow-on-hover"
                 >
-                  Reset
-                </button>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                </Link>
               </div>
             </fieldset>
             <fieldset>
-              <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+              <div className="w-[230px] h-[200px] m-2 bg-opacity-60 flex flex-col justify-between border-2 border-purple-300 rounded-2xl mx-2 p-2 bg-blue-100">
                 <label
-                  className="text-purple-600 font-semibold"
+                  className="text-purple-800 text-lg font-semibold"
                   htmlFor="wednesday"
                 >
                   Wednesday:
                 </label>
-                <div className="my-1" value={wednesdayRecipe}>
+                <div className="my-1 text-blue-500 underline" value={wednesdayRecipe}>
                   <Link onClick={() => setWedModal(true)}>
                     {wednesdayRecipe?.title}
                   </Link>
                 </div>
-                <button
+                <Link
                   onClick={(event) => handleWednesdayClick(event, recipes)}
-                  className="glow-on-hover"
                 >
-                  Reset
-                </button>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                </Link>
               </div>
             </fieldset>
             <fieldset>
-              <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+              <div className="w-[230px] h-[200px] m-2 bg-opacity-60 flex flex-col justify-between border-2 border-purple-300 rounded-2xl mx-2 p-2 bg-blue-100">
                 <label
-                  className="text-purple-600 font-semibold"
+                  className="text-purple-800 text-lg font-semibold"
                   htmlFor="thursday"
                 >
                   Thursday:
                 </label>
-                <div className="my-1" value={thursdayRecipe}>
+                <div className="my-1 text-blue-500 underline" value={thursdayRecipe}>
                   <Link onClick={() => setThuModal(true)}>
                     {thursdayRecipe?.title}
                   </Link>
                 </div>
-                <button
+                <Link
                   onClick={(event) => handleThursdayClick(event, recipes)}
-                  className="glow-on-hover"
                 >
-                  Reset
-                </button>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                </Link>
               </div>
             </fieldset>
             <fieldset>
-              <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+              <div className="w-[230px] h-[200px] m-2 bg-opacity-60 flex flex-col justify-between border-2 border-purple-300 rounded-2xl mx-2 p-2 bg-blue-100">
                 <label
-                  className="text-purple-600 font-semibold"
+                  className="text-purple-800 text-lg font-semibold"
                   htmlFor="friday"
                 >
                   Friday:
                 </label>
-                <div className="my-1" value={fridayRecipe}>
+                <div className="my-1 text-blue-500 underline" value={fridayRecipe}>
                   <Link onClick={() => setFriModal(true)}>
                     {fridayRecipe?.title}
                   </Link>
                 </div>
-                <button
+                <Link
                   onClick={(event) => handleFridayClick(event, recipes)}
-                  className="glow-on-hover"
                 >
-                  Reset
-                </button>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                </Link>
               </div>
             </fieldset>
             <fieldset>
-              <div className="w-[190px] h-[170px] flex flex-col justify-evenly border-1 rounded-2xl mx-2 p-2 bg-slate-200">
+              <div className="w-[230px] h-[200px] m-2 bg-opacity-60 flex flex-col justify-between border-2 border-purple-300 rounded-2xl mx-2 p-2 bg-blue-100">
                 <label
-                  className="text-purple-600 font-semibold"
+                  className="text-purple-800 text-lg font-semibold"
                   htmlFor="saturday"
                 >
                   Saturday:
                 </label>
-                <div className="my-1" value={saturdayRecipe}>
+                <div className="my-1 text-blue-500 underline" value={saturdayRecipe}>
                   <Link onClick={() => setSatModal(true)}>
                     {saturdayRecipe?.title}
                   </Link>
                 </div>
-                <button
+                <Link
                   onClick={(event) => handleSaturdayClick(event, recipes)}
-                  className="glow-on-hover"
                 >
-                  Reset
-                </button>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg]" src="./images/magic.png"></img>
+                </Link>
               </div>
             </fieldset>
-          </div>
-          <div>
-            <button
-              className="glow-on-hover mx-1 my-2"
-              onClick={() => navigate("/menu")}
+          </div><div>
+          <div className=" mt-10  ml-10 mb-2 tooltip tooltip-bottom tooltip-primary" data-tip="randomize">
+            <Link
+              onClick={(event) => {handleSundayClick(event, recipes)
+                handleMondayClick(event, recipes)
+                handleTuesdayClick(event, recipes)
+                handleWednesdayClick(event, recipes)
+                handleThursdayClick(event, recipes)
+                handleFridayClick(event, recipes)
+                handleSaturdayClick(event, recipes)}}
             >
-              Refresh
-            </button>
+              <img className="h-[60px] hover:animate-spin" src="./images/reload.png"></img>
+            </Link></div>
             {date.length ? (
-              <button
-                className="glow-on-hover mx-1 my-2"
+              <div className=" mt-10  ml-10 mb-2 tooltip tooltip-bottom tooltip-primary" data-tip="save to spellbook">
+              <Link
+                className=""
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
               >
-                Save Menu
-              </button>
+              <img className="h-[60px] hover:animate-bounce" src="./images/magic-book.png"></img>
+              </Link></div>
             ) : (
-             <div className="text-xs text-purple-500 font-bold italic"> To save, please first select starting date for menu.</div>
+             <div className="text-xs text-purple-500 font-semibold italic"> To save, please first select starting date for menu.</div>
             )}
           </div>
         </form>

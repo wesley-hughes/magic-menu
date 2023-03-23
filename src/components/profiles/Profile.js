@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getUser } from "../APIManager";
 
 export const Profile = () => {
@@ -33,7 +33,7 @@ export const Profile = () => {
       return (
         <input
           type="checkbox"
-          id=""
+          className="toggle toggle-lg mx-auto toggle-primary"
           value={true}
           checked
           onChange={(event) => {
@@ -45,7 +45,7 @@ export const Profile = () => {
       return (
         <input
           type="checkbox"
-          id=""
+          className="toggle toggle-lg mx-auto"
           value={false}
           onChange={(event) => {
             handleVegetarianCheck(event);
@@ -65,7 +65,7 @@ export const Profile = () => {
       return (
         <input
           type="checkbox"
-          id=""
+          className="toggle toggle-lg mx-auto toggle-primary"
           value={true}
           checked
           onChange={(event) => {
@@ -77,7 +77,7 @@ export const Profile = () => {
       return (
         <input
           type="checkbox"
-          id=""
+          className="toggle toggle-lg mx-auto"
           value={false}
           onChange={(event) => {
             handleVeganCheck(event);
@@ -97,7 +97,7 @@ export const Profile = () => {
       return (
         <input
           type="checkbox"
-          id=""
+          className="toggle toggle-lg mx-auto toggle-primary"
           value={true}
           checked
           onChange={(event) => {
@@ -109,7 +109,7 @@ export const Profile = () => {
       return (
         <input
           type="checkbox"
-          id=""
+          className="toggle toggle-lg mx-auto"
           value={false}
           onChange={(event) => {
             handleGlutenFreeCheck(event);
@@ -128,8 +128,8 @@ export const Profile = () => {
     if (user.dairyFree === true) {
       return (
         <input
+          className="toggle toggle-lg mx-auto toggle-primary"
           type="checkbox"
-          id=""
           value={true}
           checked
           onChange={(event) => {
@@ -141,7 +141,7 @@ export const Profile = () => {
       return (
         <input
           type="checkbox"
-          id=""
+          className="toggle toggle-lg mx-auto"
           value={false}
           onChange={(event) => {
             handleDairyFreeCheck(event);
@@ -174,62 +174,47 @@ export const Profile = () => {
 
   return (
     <>
-      <h2 className="">User Preferences</h2>
-      <form className="flex flex-col p-5">
-        <fieldset>
-          <div className="my-2">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="text"
-              value={user.email}
-              onChange={(evt) => {
-                const copy = { ...user };
-                copy.email = evt.target.value;
-                assignUser(copy);
-              }}
-            >
-            </input>
-          </div>
+      <form className="w-[33%] mx-auto mt-[60px] text-3xl">
+        <div className="text-purple-900 text-4xl font-bold text-center mt-[60px] leading-tight tracking-tight">
+          My Dietary Requirements
+        </div>
+        <div className="flex flex-col h-[500px] bg-opacity-60 drop-shadow-md border rounded-2xl border-purple-400 shadow-md justify-around p-5 mt-10 bg-white">
+        <fieldset className="grid grid-cols-2 my-5 items-center">
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            value={user.email}
+            onChange={(evt) => {
+              const copy = { ...user };
+              copy.email = evt.target.value;
+              assignUser(copy);
+            }}
+            className="input input-bordered input-primary w-full text-xl" 
+          ></input>
         </fieldset>
-        <fieldset>
-          <div className="my-2">
-            <label htmlFor="vegetarian">Vegetarian</label>
-            {user ? checkboxVegetarian(user) : ""}
-
-            <br></br>
-          </div>
+        <fieldset className="grid grid-cols-2 my-5 items-center">
+          <label className="" htmlFor="vegetarian">Vegetarian</label>
+          {user ? checkboxVegetarian(user) : ""}
         </fieldset>
-        <fieldset>
-          <div className="my-2">
-            <label htmlFor="Vegan">Vegan</label>
-            {user ? checkboxVegan(user) : ""}
-
-            <br></br>
-          </div>
+        <fieldset className="grid grid-cols-2 my-5 items-center">
+          <label className="" htmlFor="Vegan">Vegan</label>
+          {user ? checkboxVegan(user) : ""}
         </fieldset>
-        <fieldset>
-          <div className="my-2">
-            <label htmlFor="GlutenFree">GlutenFree</label>
-            {user ? checkboxGlutenFree(user) : ""}
-
-            <br></br>
-          </div>
+        <fieldset className="grid grid-cols-2 my-5 items-center">
+          <label className="" htmlFor="GlutenFree">GlutenFree</label>
+          {user ? checkboxGlutenFree(user) : ""}
         </fieldset>
-        <fieldset>
-          <div className="my-2">
-            <label htmlFor="DairyFree">DairyFree</label>
-            {user ? checkboxDairyFree(user) : ""}
-
-            <br></br>
-          </div>
+        <fieldset className="grid grid-cols-2 my-5 items-center">
+          <label className="" htmlFor="DairyFree">DairyFree</label>
+          {user ? checkboxDairyFree(user) : ""}
         </fieldset>
-
-        <button
+        
+        <Link
           onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-          className="glow-on-hover w-28"
+          className="ml-auto"
         >
-          Save Edits
-        </button>
+          <img src="./images/save.png" className="h-[60px] hover:animate-spin"></img>
+        </Link></div>
       </form>
     </>
   );

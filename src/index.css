@@ -1,14 +1,15 @@
+@import './Home.css';
+@import './bg.css';
 
-
+@import url('https://fonts.googleapis.com/css2?family=Bubbler+One&family=Comforter&family=Josefin+Sans&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Molle&family=Pompiere&family=Walter+Turncoat&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
  background-color: rgba(166, 167, 168, 0.06);
  padding-top: 65px;
+ 
 }
 
 code {
@@ -25,7 +26,11 @@ code {
   cursor: pointer;
   position: relative;
   z-index: 0;
-  border-radius: 10px;
+  border-radius: 5px;
+}
+
+.login-title {
+  font-family: 'Comforter', cursive;
 }
 
 .glow-on-hover:before {
@@ -46,7 +51,7 @@ code {
 }
 
 .glow-on-hover:active {
-  color: #000
+  color: #000000
 }
 
 .glow-on-hover:active:after {
@@ -63,7 +68,7 @@ code {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #cf96e4;
+  background: #793ea3;
   left: 0;
   top: 0;
   border-radius: 10px;

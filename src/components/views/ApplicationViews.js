@@ -5,6 +5,7 @@ import { WeekDisplay } from "../menus/WeekDisplay";
 import { Profile } from "../profiles/Profile";
 import { RecipeFilter } from "../menus/RecipeFilter";
 import { FavoritesDisplay } from "../favorites/FavoritesDisplay";
+import { Home } from "../home/Home";
 
 export const ApplicationViews = () => {
   return (
@@ -17,12 +18,12 @@ export const ApplicationViews = () => {
               className="w-[1000px] -z-20 opacity-30 fixed -bottom-20 right-0"
               src="./images/purple-clouds.png"
             ></img>
-            {/* <button className="my-20 ml-20 glow-on-hover">PUSH</button> */}
 
             <Outlet />
           </>
         }
       >
+        <Route path="/home" element={<Home />} />
         <Route path="/menu" element={<RecipeFilter />} />
         <Route path="/recipe" element={<WeekBuilder />} />
         <Route path="/weeks" element={<WeekDisplay />} />
