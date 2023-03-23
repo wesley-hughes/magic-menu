@@ -22,7 +22,7 @@ export const FavoritesDisplay = () => {
 
   const deleteButton = (fave) => {
     return (
-      <button
+      <Link
         onClick={() => {
           fetch(`http://localhost:8088/favorites/${fave.id}`, {
             method: "DELETE",
@@ -30,10 +30,10 @@ export const FavoritesDisplay = () => {
             getUserFavorites(userId).then((data) => setFavorites(data));
           });
         }}
-        className="glow-on-hover"
+        className=""
       >
-        Remove From Favorites
-      </button>
+        <img src="./images/trash.png" className="h-14 hover:scale-110"></img>
+      </Link>
     );
   };
 
@@ -43,30 +43,30 @@ export const FavoritesDisplay = () => {
 
   return (
     <>
-      <div>Favorites</div>
-      <div className="flex flex-wrap">
+      <div className="text-purple-700 text-4xl mt-[60px] mb-[60px] text-center font-bold leading-tight tracking-tight">My Favorite Recipes</div>
+      <div className="carousel carousel-center">
         {favorites.map((fave) => {
           return (
             <div
               key={fave.id}
-              className="w-[20%] bg-white m-3 p-3 border-2 border-purple-400 rounded-2xl hover:scale-110"
+              className="carousel-item w-[25%]"
             >
-              <div>
-                <div className="w-[200px]">
-                  <img
-                    className="w-auto justify-items-center"
+              <div className="flex flex-col bg-white m-3 p-3 border-2 border-purple-400 rounded-2xl justify-between space-y-3">
+                <div className="mx-auto">
+                <Link onClick={(event) => handleClickEvent(event, fave)}></Link> <img
+                    className="rounded-2xl border border-purple-400 shadow-md drop-shadow-md"
                     src={fave.recipe?.image}
                   />
                 </div>
-                <div className="">
-                  <Link onClick={(event) => handleClickEvent(event, fave)}>
+               
+                  <Link onClick={(event) => handleClickEvent(event, fave)} className="text-blue-600 mx-auto underline text-lg leading-tight tracking-tight">
                     {fave.recipe?.title}
                   </Link>
                  
-                  <div>{deleteButton(fave)}</div>
+                  <div className="mx-auto">{deleteButton(fave)}</div>
                 </div>
               </div>
-            </div>
+        
           );
         })}
          {FaveModal ? (

@@ -8,25 +8,24 @@ export const NavBar = () => {
 
   return (
     <>
-      <nav className="bg-blue-100 px-4 py-2 fixed w-full z-20 top-0 left-0 border-b border-gray-200">
+      <nav className="bg-gray-50 px-4 py-2 fixed w-full z-20 top-0 left-0 border-b border-purple-200">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
-          <a href="/" className="flex items-center">
+          <a href="/home" className="flex items-center">
             <img
               src="./images/crystal-ball.png"
-              className="h-10 mr-3 hover:scale-110"
+              className="h-10 mr-3 mb-1 hover:scale-110"
               alt="crystal ball"
             ></img>
-            <span className="self-center text-xl text-purple-700 font-semibold hover:scale-110 hover:text-blue-">
+            <span className="self-center mt-1 text-5xl login-title text-purple-700 hover:scale-110">
               MagicMenu
             </span>
           </a>
           <div className="flex md:order-2">
             <Link
-              className="text-white bg-purple-400 px-2 rounded hover:scale-105 hover:bg-blue-400"
-              to=""
+              className="px-2 btn btn-outline btn-secondary btn-sm pt-1"
               onClick={() => {
                 localStorage.removeItem("magic_user");
-                navigate("/", { replace: true });
+                navigate("/login", { replace: true });
               }}
             >
               Logout
@@ -36,34 +35,34 @@ export const NavBar = () => {
             <ul className="flex flex-row rounded-lg">
               <li>
                 <button
-                  className="block py-2 pl-3 pr-4 text-purple-500 rounded font-bold hover:text-blue-500  hover:scale-105 "
+                  className="block mx-4 py-2 pl-3 pr-4 text-blue-500 rounded font-bold hover:text-purple-500 hover:underline  hover:scale-105 "
                   onClick={() => navigate("/menu")}
                 >
-                  Menu
+                  Build a Menu
                 </button>
               </li>
               <li>
                 <button
-                  className="block py-2 pl-3 pr-4 text-purple-500 rounded font-bold hover:text-blue-500 hover:scale-105 "
+                  className="block mx-4 py-2 pl-3 pr-4 text-blue-500 rounded font-bold hover:text-purple-500 hover:underline hover:scale-105 "
                   onClick={() => navigate("/weeks")}
                 >
-                  Weeks
+                  Saved Menus
                 </button>
               </li>
               <li>
                 <button
-                  className="block py-2 pl-3 pr-4 text-purple-500 rounded font-bold hover:text-blue-500 hover:scale-105 "
+                  className="block mx-4 py-2 pl-3 pr-4 text-blue-500 rounded font-bold hover:text-purple-500 hover:underline hover:scale-105 "
                   onClick={() => navigate("/favorites")}
                 >
-                  Favorites
+                  Favorite Recipes
                 </button>
               </li>
               <li>
                 <button
-                  className="block py-2 pl-3 pr-4 text-purple-500 rounded font-bold hover:text-blue-500  hover:scale-105 "
+                  className="block mx-4 py-2 pl-3 pr-4 text-blue-500 rounded font-bold hover:text-purple-500 hover:underline  hover:scale-105 "
                   onClick={() => navigate("/profile")}
                 >
-                  Profile
+                  Dietary Profile
                 </button>
               </li>
             </ul>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getMenus,
   getAllRecipes,
@@ -33,88 +33,105 @@ export const WeekDisplay = () => {
   const handleFavoriteButtonClick = (day) => {
     let matchedFave = userFaves.find(
       (userFave) => userFave.recipeId === day.id
-    )
-    if(matchedFave){
+    );
+    if (matchedFave) {
       return fetch(`http://localhost:8088/favorites/${matchedFave.id}`, {
-            method: "DELETE",
-          }).then(() => {
-            getUserFavorites(userId).then((data) => setUserFaves(data))
-            })}
-    else{
-    const newFavorite = {
-      userId: userId,
-      recipeId: day.id,
-    };
+        method: "DELETE",
+      }).then(() => {
+        getUserFavorites(userId).then((data) => setUserFaves(data));
+      });
+    } else {
+      const newFavorite = {
+        userId: userId,
+        recipeId: day.id,
+      };
 
-    postFavorite(newFavorite).then(() => {
-      getUserFavorites(userId).then((data) => setUserFaves(data))
-    })}
-
+      postFavorite(newFavorite).then(() => {
+        getUserFavorites(userId).then((data) => setUserFaves(data));
+      });
+    }
   };
 
   const printMenu = (menu) => {
-    let Sunday = recipes.find((recipe) => recipe.id === menu.sundayRecipe);
-    let Monday = recipes.find((recipe) => recipe.id === menu.mondayRecipe);
-    let Tuesday = recipes.find((recipe) => recipe.id === menu.tuesdayRecipe);
+    let Sunday = recipes.find((recipe) => recipe.id === menu?.sundayRecipe);
+    let Monday = recipes.find((recipe) => recipe.id === menu?.mondayRecipe);
+    let Tuesday = recipes.find((recipe) => recipe.id === menu?.tuesdayRecipe);
     let Wednesday = recipes.find(
-      (recipe) => recipe.id === menu.wednesdayRecipe
+      (recipe) => recipe.id === menu?.wednesdayRecipe
     );
-    let Thursday = recipes.find((recipe) => recipe.id === menu.thursdayRecipe);
-    let Friday = recipes.find((recipe) => recipe.id === menu.fridayRecipe);
-    let Saturday = recipes.find((recipe) => recipe.id === menu.saturdayRecipe);
+    let Thursday = recipes.find((recipe) => recipe.id === menu?.thursdayRecipe);
+    let Friday = recipes.find((recipe) => recipe.id === menu?.fridayRecipe);
+    let Saturday = recipes.find((recipe) => recipe.id === menu?.saturdayRecipe);
     const printDay = (day) => {
       let matchedFave = userFaves.find(
-        (userFave) => userFave.recipeId === day.id
+        (userFave) => userFave.recipeId === day?.id
       );
       return (
         <>
-          <div className="flex flex-row justify-between">
-            <div className="text-slate-600 ml-2">{day?.title}</div>
-            <button
-              type="button"
-              onClick={() => {
-                handleFavoriteButtonClick(day);
-              }}
-              className="ml-3"
-            >
-              {matchedFave ? (
-                <img className="h-5" src="./images/fave.svg" />
-              ) : (
-                <img className="h-5" src="./images/unfave.svg" />
-              )}
-            </button>
-          </div>{" "}
+          <div className="text-purple-800 opacity-80 ml-2 text-sm">
+            <div className="flex flex-row justify-between ">
+              <Link
+                onClick={() => {
+                  handleFavoriteButtonClick(day);
+                }}
+                className="w-8"
+              >
+                {matchedFave ? (
+                  <img className="h-9" src="./images/fave.png" />
+                ) : (
+                  <img className="h-9" src="./images/unfave.png" />
+                )}
+              </Link>
+              <div className="w-[80%]">{day?.title}</div>
+            </div>
+          </div>
+          <div className="ml-2 w-[95%]">
+            <img className="w-full rounded-2xl" src={day?.image}></img>
+          </div>
         </>
       );
     };
 
     return (
       <>
-        <div className="flex border-2 border-purple-300 rounded-2xl p-3 w-[650px] h-[500px]">
-          <div className="flex flex-col pr-3 justify-between  w-[180px] border-r">
-            <p className="text-purple-700 font-bold text-lg">
-              Menu Date:<br></br>
-              {menu.date}
-            </p>
-            <div className="glow-on-hover text-center">
+        <div className=" ">
+          <div className="px-2 mt-5 mx-5 border-2 shadow-md drop-shadow-md rounded-xl bg-white bg-opacity-70 border-purple-300">
+            <div className="text-purple-500 drop-shadow-md font-bold text-4xl my-3">
+              {menu?.date}
+            </div>
+            <div className="flex flex-wrap w-[90%] justify-center mx-auto">
+              <div className="text-purple-600 flex flex-col justify-between h-[250px] font-semibold card bg-purple-300 border-1 border-purple-400 bg-opacity-50 m-2 p-3 shadow-md drop-shadow-md w-64 ">
+                Sunday:
+                {printDay(Sunday)}
+              </div>
+              <div className="text-purple-600 flex flex-col justify-between h-[250px] font-semibold card bg-purple-300 border-1 border-purple-400 bg-opacity-50 m-2 p-3 shadow-md drop-shadow-md w-64 ">
+                Monday:
+                {printDay(Monday)}
+              </div>
+              <div className="text-purple-600 flex flex-col justify-between h-[250px] font-semibold card bg-purple-300 border-1 border-purple-400 bg-opacity-50 m-2 p-3 shadow-md drop-shadow-md w-64 ">
+                Tuesday:
+                {printDay(Tuesday)}
+              </div>
+              <div className="text-purple-600 flex flex-col justify-between h-[250px] font-semibold card bg-purple-300 border-1 border-purple-400 bg-opacity-50 m-2 p-3 shadow-md drop-shadow-md w-64 ">
+                Wednesday:
+                {printDay(Wednesday)}
+              </div>
+              <div className="text-purple-600 flex flex-col justify-between h-[250px] font-semibold card bg-purple-300 border-1 border-purple-400 bg-opacity-50 m-2 p-3 shadow-md drop-shadow-md w-64 ">
+                Thursday:
+                {printDay(Thursday)}
+              </div>
+              <div className="text-purple-600 flex flex-col justify-between h-[250px] font-semibold card bg-purple-300 border-1 border-purple-400 bg-opacity-50 m-2 p-3 shadow-md drop-shadow-md w-64 ">
+                Friday:
+                {printDay(Friday)}
+              </div>
+              <div className="text-purple-600 flex flex-col justify-between h-[250px] font-semibold card bg-purple-300 border-1 border-purple-400 bg-opacity-50 m-2 p-3 shadow-md drop-shadow-md w-64 ">
+                Saturday:
+                {printDay(Saturday)}
+              </div>
+            </div>
+            <div className="card-actions justify-start p-1">
               {deleteButton(menu)}
             </div>
-          </div>
-          <div className="flex flex-col ml-5">
-            <p className="text-slate-700 font-semibold text-lg">Sunday:</p>
-            {printDay(Sunday)}
-            <p className="text-slate-700 font-semibold text-lg">Monday:</p>
-            {printDay(Monday)}
-            <p className="text-slate-700 font-semibold text-lg">Tuesday:</p>
-            {printDay(Tuesday)}
-            <p className="text-slate-700 font-semibold text-lg">Wednesday: </p>
-            {printDay(Wednesday)}
-            <p className="text-slate-700 font-semibold text-lg">Thursday:</p>
-            {printDay(Thursday)}
-            <p className="text-slate-700 font-semibold text-lg">Friday:</p>
-            {printDay(Friday)}
-            <p className="text-slate-700 font-semibold text-lg">Saturday:</p>
-            {printDay(Saturday)}
           </div>
         </div>
         <br></br>
@@ -124,30 +141,28 @@ export const WeekDisplay = () => {
 
   const deleteButton = (menu) => {
     return (
-      <button
+      <Link
         onClick={() => {
-          fetch(`http://localhost:8088/menus/${menu.id}`, {
+          fetch(`http://localhost:8088/menus/${menu?.id}`, {
             method: "DELETE",
           }).then(() => {
             resetMenus();
           });
         }}
-        className=""
+        className="pt-1 hover:animate-bounce"
       >
-        Delete
-      </button>
+        <img className="h-[80px] ml-[55px] mb-[5px]" src="./images/trash.png"></img>
+      </Link>
     );
   };
 
   return (
     <>
-      <div className="flex">
+      <div className="carousel carousel-center rounded-box">
         {menus.map((menu) => {
           return (
-            <div key={menu?.id} className="p-2">
+            <div key={menu?.id} className="p-2 carousel-item w-[85%]">
               {printMenu(menu)}
-
-              <br></br>
             </div>
           );
         })}
