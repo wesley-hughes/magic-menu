@@ -3,14 +3,30 @@ import { Link } from "react-router-dom";
 import { getUserFavorites } from "../APIManager";
 import { FavoriteModal } from "../modals/FavoriteModal";
 
-export const FavoritesDisplay = () => {
+export const FavoritesDisplay = ({ searchTermState }) => {
   const [favorites, setFavorites] = useState([]);
   const [Fave, setFave] = useState({});
   const [FaveModal, setFaveModal] = useState(false);
+  const [filteredFavorites, setFilteredFavorites] = useState([]);
+
   const localMagicUser = localStorage.getItem("magic_user");
   const magicUserObject = JSON.parse(localMagicUser);
   const userId = parseInt(magicUserObject.id);
 
+  useEffect(() => {
+    
+    const searchedFavorites = favorites?.filter((favorite) => {
+      return (
+        favorite?.recipe?.title.toLowerCase().includes(searchTermState.toLowerCase()) &&
+        searchTermState.length > 0
+      );
+    });
+    setFilteredFavorites(searchedFavorites);
+  }, [searchTermState]);
+
+  useEffect(() => {
+    getUserFavorites(userId).then((data) => setFavorites(data));
+  }, [userId]);
 
   const handleFaveClose = () => setFaveModal(false);
 
@@ -37,44 +53,71 @@ export const FavoritesDisplay = () => {
     );
   };
 
-  useEffect(() => {
-    getUserFavorites(userId).then((data) => setFavorites(data));
-  }, [userId]);
-
   return (
     <>
-      <div className="text-purple-700 text-4xl mt-[60px] mb-[60px] text-center font-bold leading-tight tracking-tight">My Favorite Recipes</div>
+      <div className="text-purple-700 text-4xl mb-[60px] text-center font-bold leading-tight tracking-tight">
+        My Favorite Recipes
+      </div>
       <div className="carousel carousel-center">
-        {favorites.map((fave) => {
-          return (
-            <div
-              key={fave.id}
-              className="carousel-item w-[25%]"
-            >
-              <div className="flex flex-col bg-white m-3 p-3 border-2 border-purple-400 rounded-2xl justify-between space-y-3">
-                <div className="mx-auto">
-                <Link onClick={(event) => handleClickEvent(event, fave)}></Link> <img
-                    className="rounded-2xl border border-purple-400 shadow-md drop-shadow-md"
-                    src={fave.recipe?.image}
-                  />
+        {filteredFavorites.length < 1
+          ? favorites.map((fave) => {
+              return (
+                <div key={fave.id} className="carousel-item w-[25%]">
+                  <div className="flex flex-col bg-white m-3 p-3 border-2 border-purple-400 rounded-2xl justify-between space-y-3">
+                    <div className="mx-auto">
+                      <Link
+                        onClick={(event) => handleClickEvent(event, fave)}
+                      ></Link>{" "}
+                      <img
+                        className="rounded-2xl border border-purple-400 shadow-md drop-shadow-md"
+                        src={fave.recipe?.image}
+                      />
+                    </div>
+
+                    <Link
+                      onClick={(event) => handleClickEvent(event, fave)}
+                      className="text-blue-600 mx-auto underline text-lg leading-tight tracking-tight"
+                    >
+                      {fave.recipe?.title}
+                    </Link>
+
+                    <div className="mx-auto">{deleteButton(fave)}</div>
+                  </div>
                 </div>
-               
-                  <Link onClick={(event) => handleClickEvent(event, fave)} className="text-blue-600 mx-auto underline text-lg leading-tight tracking-tight">
-                    {fave.recipe?.title}
-                  </Link>
-                 
-                  <div className="mx-auto">{deleteButton(fave)}</div>
+              );
+            })
+          : filteredFavorites.map((fave) => {
+              return (
+                <div key={fave.id} className="carousel-item w-[25%]">
+                  <div className="flex flex-col bg-white m-3 p-3 border-2 border-purple-400 rounded-2xl justify-between space-y-3">
+                    <div className="mx-auto">
+                      <Link
+                        onClick={(event) => handleClickEvent(event, fave)}
+                      ></Link>{" "}
+                      <img
+                        className="rounded-2xl border border-purple-400 shadow-md drop-shadow-md"
+                        src={fave.recipe?.image}
+                      />
+                    </div>
+
+                    <Link
+                      onClick={(event) => handleClickEvent(event, fave)}
+                      className="text-blue-600 mx-auto underline text-lg leading-tight tracking-tight"
+                    >
+                      {fave.recipe?.title}
+                    </Link>
+
+                    <div className="mx-auto">{deleteButton(fave)}</div>
+                  </div>
                 </div>
-              </div>
-        
-          );
-        })}
-         {FaveModal ? (
-                    <FavoriteModal
-                      Fave={Fave}
-                      handleFaveClose={handleFaveClose}
-                    ></FavoriteModal>
-                  ) : null}
+              );
+            })}
+        {FaveModal ? (
+          <FavoriteModal
+            Fave={Fave}
+            handleFaveClose={handleFaveClose}
+          ></FavoriteModal>
+        ) : null}
       </div>
     </>
   );
