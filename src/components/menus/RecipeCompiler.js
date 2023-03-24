@@ -24,6 +24,8 @@ export const RecipeCompiler = ({ filtered }) => {
     return recipeObject;
   };
 
+
+  /* SET RECIPE FOR EACH DAY*/
   useEffect(() => {
     if (filteredRecipes.length > 0) {
       setSundayRecipe(getRecipeObject(filteredRecipes));
@@ -56,7 +58,6 @@ export const RecipeCompiler = ({ filtered }) => {
         filteredRecipes.filter((recipe) => recipe.id !== sundayRecipe.id)
       );
     }
-    setMondayRecipe(getRecipeObject(MonFiltered));
   }, [sundayRecipe, filteredRecipes]);
 
   useEffect(() => {
@@ -65,7 +66,6 @@ export const RecipeCompiler = ({ filtered }) => {
         MonFiltered.filter((recipe) => recipe.id !== mondayRecipe?.id)
       );
     }
-    setTuesdayRecipe(getRecipeObject(TueFiltered));
   }, [mondayRecipe, MonFiltered]);
 
   useEffect(() => {
@@ -74,7 +74,6 @@ export const RecipeCompiler = ({ filtered }) => {
         TueFiltered.filter((recipe) => recipe.id !== tuesdayRecipe?.id)
       );
     }
-    setWednesdayRecipe(getRecipeObject(WedFiltered));
   }, [tuesdayRecipe, TueFiltered]);
 
   useEffect(() => {
@@ -83,7 +82,6 @@ export const RecipeCompiler = ({ filtered }) => {
         WedFiltered.filter((recipe) => recipe.id !== wednesdayRecipe?.id)
       );
     }
-    setThursdayRecipe(getRecipeObject(ThuFiltered));
   }, [wednesdayRecipe, WedFiltered]);
 
   useEffect(() => {
@@ -92,7 +90,6 @@ export const RecipeCompiler = ({ filtered }) => {
         ThuFiltered.filter((recipe) => recipe.id !== thursdayRecipe?.id)
       );
     }
-    setFridayRecipe(getRecipeObject(FriFiltered));
   }, [thursdayRecipe, ThuFiltered]);
 
   useEffect(() => {
@@ -101,8 +98,39 @@ export const RecipeCompiler = ({ filtered }) => {
         FriFiltered.filter((recipe) => recipe.id !== fridayRecipe?.id)
       );
     }
-    setSaturdayRecipe(getRecipeObject(SatFiltered));
   }, [fridayRecipe, FriFiltered]);
+
+  /* SET RECIPE ARRAY FOR EACH DAY */
+  useEffect(() => {
+    if (MonFiltered.length > 0) {
+      setMondayRecipe(getRecipeObject(MonFiltered));
+    }
+  }, [MonFiltered]);
+  useEffect(() => {
+    if (TueFiltered.length > 0) {
+      setTuesdayRecipe(getRecipeObject(TueFiltered));
+    }
+  }, [TueFiltered]);
+  useEffect(() => {
+    if (WedFiltered.length > 0) {
+      setWednesdayRecipe(getRecipeObject(WedFiltered));
+    }
+  }, [WedFiltered]);
+  useEffect(() => {
+    if (ThuFiltered.length > 0) {
+      setThursdayRecipe(getRecipeObject(ThuFiltered));
+    }
+  }, [ThuFiltered]);
+  useEffect(() => {
+    if (FriFiltered.length > 0) {
+      setFridayRecipe(getRecipeObject(FriFiltered));
+    }
+  }, [FriFiltered]);
+  useEffect(() => {
+    if (SatFiltered.length > 0) {
+      setSaturdayRecipe(getRecipeObject(SatFiltered));
+    }
+  }, [SatFiltered]);
 
   const resetSunday = (filteredRecipes) => {
     const recipeObject =
@@ -141,7 +169,7 @@ export const RecipeCompiler = ({ filtered }) => {
   };
 
   useEffect(() => {
-    if (typeFilter) {
+    if (typeFilter !== "") {
       let filteredRecipes1 = filtered.filter((recipe) =>
         recipe.dishTypes.includes(typeFilter)
       );
@@ -151,16 +179,21 @@ export const RecipeCompiler = ({ filtered }) => {
     }
   }, [typeFilter, filtered]);
 
+  const selectMealType = (event) => {
+    setTypeFilter(event.target.value)
+  }
+
   return (
     <>
       <select
         onChange={(event) => {
-          setTypeFilter(event.target.value);
+          selectMealType(event);
         }}
-        className="mt-[100px]"
+        className="mt-[80px] ml-[275px] bg-opacity-80 rounded-2xl bg-blue-100 text-purple-600 h-[34px] pl-2 w-[230px] text-lg text-left"
       >
-        <option value="0">Choose Option</option>
-        <option value="breakfast">Breakfast</option>
+        <option value="">Select Recipe Type</option>
+        <option value="main course">Main</option>
+        <option value="side dish">Side</option>
         <option value="lunch">Lunch</option>
         <option value="dinner">Dinner</option>
       </select>

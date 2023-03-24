@@ -225,6 +225,7 @@ export const Profile = () => {
             <img
               src="./images/save.png"
               className="h-[60px] hover:animate-spin"
+              alt="save disk"
             ></img>
           </Link>
         </div>

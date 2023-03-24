@@ -22,7 +22,7 @@ export const FavoritesDisplay = ({ searchTermState }) => {
       );
     });
     setFilteredFavorites(searchedFavorites);
-  }, [searchTermState]);
+  }, [searchTermState, favorites] );
 
   useEffect(() => {
     getUserFavorites(userId).then((data) => setFavorites(data));
@@ -48,7 +48,7 @@ export const FavoritesDisplay = ({ searchTermState }) => {
         }}
         className=""
       >
-        <img src="./images/trash.png" className="h-14 hover:scale-110"></img>
+        <img src="./images/trash.png" className="h-14 hover:scale-110" alt="trashcan"></img>
       </Link>
     );
   };
@@ -58,12 +58,12 @@ export const FavoritesDisplay = ({ searchTermState }) => {
       <div className="text-purple-700 text-4xl mb-[60px] text-center font-bold leading-tight tracking-tight">
         My Favorite Recipes
       </div>
-      <div className="carousel carousel-center">
+      <div className="carousel carousel-center bg-white bg-opacity-50 border border-purple-400 p-5">
         {filteredFavorites.length < 1
           ? favorites.map((fave) => {
               return (
                 <div key={fave.id} className="carousel-item w-[25%]">
-                  <div className="flex flex-col bg-white m-3 p-3 border-2 border-purple-400 rounded-2xl justify-between space-y-3">
+                  <div className="flex flex-col bg-purple-100 m-3 p-3 border-2 border-purple-400 rounded-2xl justify-between space-y-3">
                     <div className="mx-auto">
                       <Link
                         onClick={(event) => handleClickEvent(event, fave)}
@@ -71,6 +71,7 @@ export const FavoritesDisplay = ({ searchTermState }) => {
                       <img
                         className="rounded-2xl border border-purple-400 shadow-md drop-shadow-md"
                         src={fave.recipe?.image}
+                        alt="food"
                       />
                     </div>
 
@@ -97,6 +98,7 @@ export const FavoritesDisplay = ({ searchTermState }) => {
                       <img
                         className="rounded-2xl border border-purple-400 shadow-md drop-shadow-md"
                         src={fave.recipe?.image}
+                        alt="food"
                       />
                     </div>
 

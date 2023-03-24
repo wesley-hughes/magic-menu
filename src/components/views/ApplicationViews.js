@@ -17,6 +17,7 @@ export const ApplicationViews = () => {
             <img
               className="w-[1000px] -z-20 opacity-30 fixed -bottom-20 right-0"
               src="./images/purple-clouds.png"
+              alt="clouds"
             ></img>
 
             <Outlet />
