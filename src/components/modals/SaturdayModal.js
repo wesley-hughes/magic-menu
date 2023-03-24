@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { WeekBuilder } from "../menus/WeekBuilder";
-import { WeekDisplay } from "../menus/WeekDisplay";
 
 export const SaturdayModal = ({ visible, saturdayRecipe, onClose }) => {
   const [ingredients, setIngredients] = useState([]);
@@ -37,7 +35,7 @@ export const SaturdayModal = ({ visible, saturdayRecipe, onClose }) => {
 
   if (!visible) return null;
   return (
-    <div className="fixed inset-[0px] mt-[70px] bg-gray-50  backdrop-blur-sm ">
+    <div className="fixed inset-[0px] mt-[70px] bg-gray-50  backdrop-blur-sm overflow-y-auto scroll-smooth">
       <Link
         onClick={onClose}
       >

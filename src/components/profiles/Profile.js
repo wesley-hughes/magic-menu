@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { getUser } from "../APIManager";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { SaveProfileModal } from "../modals/SaveProfileModal";
 
 export const Profile = () => {
   const navigate = useNavigate();
+  const [saveModal, setSaveModal] = useState(false);
   const [user, assignUser] = useState({
     id: 0,
     email: "",
   });
-
   const localMagicUser = localStorage.getItem("magic_user");
   const magicUserObject = JSON.parse(localMagicUser);
   const userId = magicUserObject.id;
@@ -22,6 +22,7 @@ export const Profile = () => {
       });
   }, [userId]);
 
+  const handleSaveClose = () => setSaveModal(false);
   const handleVegetarianCheck = (event) => {
     let copy = { ...user };
     copy.vegetarian = event.target.checked;
@@ -169,53 +170,66 @@ export const Profile = () => {
             const userObject = data[0];
             assignUser(userObject);
           });
-      });
+      });setSaveModal(true)
   };
 
   return (
     <>
-      <form className="w-[33%] mx-auto mt-[60px] text-3xl">
+      <form className="w-[33%] mx-auto mt-[60px] text-3xl h-screen">
         <div className="text-purple-900 text-4xl font-bold text-center mt-[60px] leading-tight tracking-tight">
           My Dietary Requirements
         </div>
         <div className="flex flex-col h-[500px] bg-opacity-60 drop-shadow-md border rounded-2xl border-purple-400 shadow-md justify-around p-5 mt-10 bg-white">
-        <fieldset className="grid grid-cols-2 my-5 items-center">
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            value={user.email}
-            onChange={(evt) => {
-              const copy = { ...user };
-              copy.email = evt.target.value;
-              assignUser(copy);
-            }}
-            className="input input-bordered input-primary w-full text-xl" 
-          ></input>
-        </fieldset>
-        <fieldset className="grid grid-cols-2 my-5 items-center">
-          <label className="" htmlFor="vegetarian">Vegetarian</label>
-          {user ? checkboxVegetarian(user) : ""}
-        </fieldset>
-        <fieldset className="grid grid-cols-2 my-5 items-center">
-          <label className="" htmlFor="Vegan">Vegan</label>
-          {user ? checkboxVegan(user) : ""}
-        </fieldset>
-        <fieldset className="grid grid-cols-2 my-5 items-center">
-          <label className="" htmlFor="GlutenFree">GlutenFree</label>
-          {user ? checkboxGlutenFree(user) : ""}
-        </fieldset>
-        <fieldset className="grid grid-cols-2 my-5 items-center">
-          <label className="" htmlFor="DairyFree">DairyFree</label>
-          {user ? checkboxDairyFree(user) : ""}
-        </fieldset>
-        
-        <Link
-          onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-          className="ml-auto"
-        >
-          <img src="./images/save.png" className="h-[60px] hover:animate-spin"></img>
-        </Link></div>
+          <fieldset className="grid grid-cols-2 my-5 items-center">
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              value={user.email}
+              onChange={(evt) => {
+                const copy = { ...user };
+                copy.email = evt.target.value;
+                assignUser(copy);
+              }}
+              className="input input-bordered input-primary w-full text-xl"
+            ></input>
+          </fieldset>
+          <fieldset className="grid grid-cols-2 my-5 items-center">
+            <label className="" htmlFor="vegetarian">
+              Vegetarian
+            </label>
+            {user ? checkboxVegetarian(user) : ""}
+          </fieldset>
+          <fieldset className="grid grid-cols-2 my-5 items-center">
+            <label className="" htmlFor="Vegan">
+              Vegan
+            </label>
+            {user ? checkboxVegan(user) : ""}
+          </fieldset>
+          <fieldset className="grid grid-cols-2 my-5 items-center">
+            <label className="" htmlFor="GlutenFree">
+              GlutenFree
+            </label>
+            {user ? checkboxGlutenFree(user) : ""}
+          </fieldset>
+          <fieldset className="grid grid-cols-2 my-5 items-center">
+            <label className="" htmlFor="DairyFree">
+              DairyFree
+            </label>
+            {user ? checkboxDairyFree(user) : ""}
+          </fieldset>
+
+          <Link
+            onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+            className="ml-auto"
+          >
+            <img
+              src="./images/save.png"
+              className="h-[60px] hover:animate-spin"
+            ></img>
+          </Link>
+        </div>
       </form>
+      <SaveProfileModal onClose={handleSaveClose} visible={saveModal} />
     </>
   );
 };

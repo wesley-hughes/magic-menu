@@ -9,6 +9,7 @@ export const RecipeFilter = () => {
   const [filter2, setFiltered2] = useState([])
   const [filter3, setFiltered3] = useState([])
   const [filter4, setFiltered4] = useState([])
+  const [filterSelect, setFilteredSelect] = useState([])
   const [filteredRecipes, setFilteredRecipes] = useState([]);
 
     const localMagicUser = localStorage.getItem("magic_user");
@@ -57,9 +58,10 @@ export const RecipeFilter = () => {
     },[filter4])
     
 
+
     return <>
     <RecipeCompiler key={parseInt(user.id)}
-    filteredRecipes={filteredRecipes}></RecipeCompiler>
+    filtered={filteredRecipes}></RecipeCompiler>
     </>
 
 }

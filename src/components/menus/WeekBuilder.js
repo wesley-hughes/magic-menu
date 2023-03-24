@@ -8,6 +8,7 @@ import { SundayModal } from "../modals/SundayModal";
 import { ThursdayModal } from "../modals/ThursdayModal";
 import { TuesdayModal } from "../modals/TuesdayModal";
 import { WednesdayModal } from "../modals/WednesdayModal";
+import { SaveModal } from "../modals/SaveModal";
 
 export const WeekBuilder = ({
   recipes,
@@ -33,10 +34,13 @@ export const WeekBuilder = ({
   const [ThuModal, setThuModal] = useState(false);
   const [FriModal, setFriModal] = useState(false);
   const [SatModal, setSatModal] = useState(false);
+  const [saveModal, setSaveModal] = useState(false)
+  const handleSaveClose = () => setSaveModal(false);
   const [date, setDate] = useState({});
   const navigate = useNavigate();
   const localMagicUser = localStorage.getItem("magic_user");
   const magicUserObject = JSON.parse(localMagicUser);
+
 
   const handleSaveButtonClick = (event) => {
     event.preventDefault();
@@ -55,7 +59,7 @@ export const WeekBuilder = ({
     postMenu(weekToSendToApi).then(() => {
       navigate("/menu");
     });
-    window.alert("Menu Saved!");
+    setSaveModal(true);
   };
 
   const handleSundayClick = (event, recipes) => {
@@ -324,6 +328,10 @@ export const WeekBuilder = ({
         onClose={handleSatClose}
         saturdayRecipe={saturdayRecipe}
         visible={SatModal}
+      />
+      <SaveModal
+        onClose={handleSaveClose}
+        visible={saveModal}
       />
     </>
   );

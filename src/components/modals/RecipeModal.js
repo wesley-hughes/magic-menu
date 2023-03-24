@@ -1,42 +1,42 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const FavoriteModal = ({ Fave, handleFaveClose }) => {
+export const RecipeModal = ({ recipe, handleClose, visible }) => {
   const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
-    setIngredients(Fave?.recipe.extendedIngredients);
-  }, [Fave]);
+    setIngredients(recipe?.extendedIngredients);
+  }, [recipe]);
 
   const isVegetarian = () => {
-    if(Fave.recipe.vegetarian){
+    if(recipe.vegetarian){
       return <img className="h-[80px] mt-2 hover:animate-bounce" src="./images/yes.png"></img>
     }
     else{return <img className="h-[80px] mt-2 hover:animate-bounce" src="./images/no.png"></img>}
   }
   const isVegan = () => {
-    if(Fave.recipe.vegan){
+    if(recipe.vegan){
       return <img className="h-[80px] mt-2 hover:animate-bounce" src="./images/yes.png"></img>
     }
     else{return <img className="h-[80px] mt-2 hover:animate-bounce" src="./images/no.png"></img>}
   }
   const isGF = () => {
-    if(Fave.recipe.glutenFree){
+    if(recipe.glutenFree){
       return <img className="h-[80px] mt-2 hover:animate-bounce" src="./images/yes.png"></img>
     }
     else{return <img className="h-[80px] mt-2 hover:animate-bounce" src="./images/no.png"></img>}
   }
   const isDF = () => {
-    if(Fave.recipe.dairyFree){
+    if(recipe.dairyFree){
       return <img className="h-[80px] mt-2 hover:animate-bounce" src="./images/yes.png"></img>
     }
     else{return <img className="h-[80px] mt-2 hover:animate-bounce" src="./images/no.png"></img>}
   }
-
+  if (!visible) return null;
   return (
     <div className="fixed inset-[0px] mt-[70px] bg-gray-50  backdrop-blur-sm overflow-y-auto scroll-smooth">
     <Link
-      onClick={handleFaveClose}
+      onClick={handleClose}
     >
       <img className="px-2 py-0 ml-5 h-8 hover:animate-spin" src="./images/close.png"></img>
     </Link>
@@ -44,14 +44,14 @@ export const FavoriteModal = ({ Fave, handleFaveClose }) => {
       
         <img
           className=" p-1 border-4 border-slate-200  my-[50px] object-fill shadow-md rounded-xl"
-          src={Fave?.recipe.image}
+          src={recipe?.image}
         ></img>
       
       <div className="w-[80%] h-[300px] flex flex-col justify-between pb-10">
-        <p className="text-purple-800 font-bold leading-tight tracking-tight drop-shadow-xl mb-2 text-5xl">{Fave?.recipe.title}</p>
+        <p className="text-purple-800 font-bold leading-tight tracking-tight drop-shadow-xl mb-2 text-5xl">{recipe?.title}</p>
         <div className="text-purple-500 py-2 pl-2 drop-shadow-xl font-semibold text-xl">
           <img className="h-9 inline mr-3" src="./images/hourglass.png"></img>
-          <div className="inline leading-tight tracking-tight">Prep Time: {Fave?.recipe.readyInMinutes} minutes</div></div>
+          <div className="inline leading-tight tracking-tight">Prep Time: {recipe?.readyInMinutes} minutes</div></div>
         <div className=" flex flex-row text-center justify-around">
           <div className="text-purple-700 drop-shadow-md">{isVegetarian()}Vegetarian </div>
           <div className="text-purple-700 drop-shadow-md">{isVegan()}Vegan </div>
@@ -70,7 +70,7 @@ export const FavoriteModal = ({ Fave, handleFaveClose }) => {
         </div></article>
         <div className="m-1 w-[80%] h-[300px]">
         <h1 className="text-purple-800 font-bold leading-tight tracking-tight text-lg">Instructions:</h1>
-        <div className="text-sm text-purple-800 leading-tight tracking-tight p-2">{Fave?.recipe.instructions}</div>
+        <div className="text-sm text-purple-800 leading-tight tracking-tight p-2">{recipe?.instructions}</div>
       </div>
     </div>
   </div>
