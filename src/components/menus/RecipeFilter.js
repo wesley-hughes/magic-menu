@@ -9,7 +9,6 @@ export const RecipeFilter = () => {
   const [filter2, setFiltered2] = useState([])
   const [filter3, setFiltered3] = useState([])
   const [filter4, setFiltered4] = useState([])
-  const [filterSelect, setFilteredSelect] = useState([])
   const [filteredRecipes, setFilteredRecipes] = useState([]);
 
     const localMagicUser = localStorage.getItem("magic_user");
@@ -19,7 +18,7 @@ export const RecipeFilter = () => {
     useEffect(() => {
       getUser(userId).then((data) => setUser(data[0]));
       getRecipes().then((data) => setRecipes(data));
-    }, []);
+    }, [userId]);
   
     useEffect(() => {
       let filtered = [...recipes];
@@ -56,8 +55,6 @@ export const RecipeFilter = () => {
     useEffect(() => {
       setFilteredRecipes(filter4)
     },[filter4])
-    
-
 
     return <>
     <RecipeCompiler key={parseInt(user.id)}

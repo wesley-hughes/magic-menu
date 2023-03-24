@@ -33,7 +33,7 @@ export const Login = () => {
     <>
       <div className="body fixed inset-0">
         <div className="z-0 opacity-50">
-          <img className="fixed rotate-[143deg] w-[300px] mt-[7px] ml-[595px]" src="../images/magicwand.png"></img>
+          <img className="fixed rotate-[143deg] w-[300px] mt-[7px] ml-[608px]" src="../images/magicwand.png" alt="wand"></img>
         </div>
         <section className="">
           <div className="flex flex-row items-center justify-center px-6 py-8 mt-[150px]">
@@ -87,7 +87,7 @@ export const Login = () => {
                     className="w-[200px] shadow-lg text-purple-200 inline border border-purple-600 bg-purple-500 bg-opacity-60 hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg px-5 pt-1 text-center text-lg uppercase"
                   >
                     Sign in
-                  </button><img className="w-[70px] inline -my-1 opacity-60 -scale-x-100 ml-2" src="../images/broom.png"></img>
+                  </button><img className="w-[70px] inline -my-1 opacity-60 -scale-x-100 ml-2" src="../images/broom.png" alt="broom"></img>
                  </div> <p className="text-sm font-light text-purple-800">
                     Don’t have an account yet?
                     <a

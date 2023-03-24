@@ -101,15 +101,15 @@ export const WeekBuilder = ({
 
   return (
     <>
-      <div className="pl-8 pr-8 pb-8  m-5 h-full">
+      <div className="pl-8 pr-8 pb-8  h-full">
         <form>
-          <h2 className="text-purple-900 text-4xl font-bold leading-tight tracking-tight">Build your Menu</h2>
-          <fieldset className="border-2 rounded-2xl bg-blue-100 -ml-1 mt-2 pl-2 w-[230px] text-lg text-left">
+          <h2 className="text-purple-900 text-4xl -mt-[87px] font-bold leading-tight tracking-tight">Build your Menu</h2>
+          <fieldset className="bg-opacity-80 rounded-2xl bg-blue-100 -ml-1 mt-2 pl-2 w-[230px] text-lg text-left">
             <label
-              className=" text-left mr-2 text-purple-800"
+              className=" text-left mr-2 text-purple-800 bg-opacity-80"
               htmlFor="date"
             >
-              Date:
+              
             </label>
             <input
               className="text-purple-600 bg-blue-100 text-center"
@@ -142,7 +142,7 @@ export const WeekBuilder = ({
                 <Link
                   onClick={(event) => handleSundayClick(event, recipes)}
                 >
-                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png" alt="magic swirl"></img>
                 </Link>
               </div>
             </fieldset>
@@ -163,7 +163,7 @@ export const WeekBuilder = ({
                 <Link
                   onClick={(event) => handleMondayClick(event, recipes)}
                 >
-                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png" alt="magic swirl"></img>
                 </Link>
               </div>
             </fieldset>
@@ -183,7 +183,7 @@ export const WeekBuilder = ({
                 <Link
                   onClick={(event) => handleTuesdayClick(event, recipes)}
                 >
-                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png" alt="magic swirl"></img>
                 </Link>
               </div>
             </fieldset>
@@ -203,7 +203,7 @@ export const WeekBuilder = ({
                 <Link
                   onClick={(event) => handleWednesdayClick(event, recipes)}
                 >
-                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png" alt="magic swirl"></img>
                 </Link>
               </div>
             </fieldset>
@@ -223,7 +223,7 @@ export const WeekBuilder = ({
                 <Link
                   onClick={(event) => handleThursdayClick(event, recipes)}
                 >
-                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png" alt="magic swirl"></img>
                 </Link>
               </div>
             </fieldset>
@@ -243,7 +243,7 @@ export const WeekBuilder = ({
                 <Link
                   onClick={(event) => handleFridayClick(event, recipes)}
                 >
-                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png"></img>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg] " src="./images/magic.png" alt="magic swirl"></img>
                 </Link>
               </div>
             </fieldset>
@@ -263,7 +263,7 @@ export const WeekBuilder = ({
                 <Link
                   onClick={(event) => handleSaturdayClick(event, recipes)}
                 >
-                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg]" src="./images/magic.png"></img>
+                  <img className="h-10 ml-auto mr-2 hover:rotate-[170deg]" src="./images/magic.png" alt="magic swirl"></img>
                 </Link>
               </div>
             </fieldset>
@@ -278,7 +278,7 @@ export const WeekBuilder = ({
                 handleFridayClick(event, recipes)
                 handleSaturdayClick(event, recipes)}}
             >
-              <img className="h-[60px] hover:animate-spin" src="./images/reload.png"></img>
+              <img className="h-[60px] hover:animate-spin" src="./images/reload.png" alt="reload arrow"></img>
             </Link></div>
             {date.length ? (
               <div className=" mt-10  ml-10 mb-2 tooltip tooltip-bottom tooltip-primary" data-tip="save to spellbook">
@@ -286,7 +286,7 @@ export const WeekBuilder = ({
                 className=""
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
               >
-              <img className="h-[60px] hover:animate-bounce" src="./images/magic-book.png"></img>
+              <img className="h-[60px] hover:animate-bounce" src="./images/magic-book.png" alt="spellbook"></img>
               </Link></div>
             ) : (
              <div className="text-xs text-purple-500 font-semibold italic"> To save, please first select starting date for menu.</div>

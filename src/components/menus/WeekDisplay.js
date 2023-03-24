@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   getMenus,
   getAllRecipes,
@@ -15,7 +15,7 @@ export const WeekDisplay = () => {
   const [modal, setModal] = useState(false);
   const [Day, setDay] = useState([]);
 
-  const navigate = useNavigate();
+ 
   const localMagicUser = localStorage.getItem("magic_user");
   const magicUserObject = JSON.parse(localMagicUser);
   const userId = parseInt(magicUserObject.id);
@@ -27,7 +27,7 @@ export const WeekDisplay = () => {
   useEffect(() => {
     getAllRecipes().then((data) => setRecipes(data));
     resetMenus();
-  }, []);
+  }, [resetMenus]);
   
   useEffect(() => {
     getUserFavorites(userId).then((data) => setUserFaves(data));
@@ -101,7 +101,7 @@ export const WeekDisplay = () => {
             </div>
           </div>
           <div className="ml-2 w-[95%]">
-            <img className="w-full rounded-2xl" src={day?.image}></img>
+            <img className="w-full rounded-2xl" src={day?.image} alt="food"></img>
           </div>
           
         </>
@@ -171,6 +171,7 @@ export const WeekDisplay = () => {
         <img
           className="h-[80px] ml-[55px] mb-[5px]"
           src="./images/trash.png"
+          alt="trash can"
         ></img>
       </Link>
     );
