@@ -57,7 +57,7 @@ export const RecipeFilter = () => {
     },[filter4])
 
     return <>
-    <RecipeCompiler key={parseInt(user.id)}
+    <RecipeCompiler key={parseInt(userId)}
     filtered={filteredRecipes}></RecipeCompiler>
     </>
 
