@@ -30,7 +30,7 @@ export const Register = () => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        return fetch(`https://magic-menu-envgd.ondigitalocean.app/users?email=${user.email}`)
+        return fetch(`https://mm-app-ej7qy.ondigitalocean.app/users?email=${user.email}`)
             .then(res => res.json())
             .then(response => {
                 if (response.length > 0) {
