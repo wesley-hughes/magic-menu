@@ -10,7 +10,7 @@ export const Login = () => {
     e.preventDefault();
 
     return fetch(
-      `http://localhost:8088/users?email=${email}&password=${password}`
+      `https://mm-app-ej7qy.ondigitalocean.app/users?email=${email}&password=${password}`
     )
       .then((res) => res.json())
       .then((foundUsers) => {

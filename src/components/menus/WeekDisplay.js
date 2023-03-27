@@ -37,7 +37,7 @@ export const WeekDisplay = () => {
       (userFave) => userFave.recipeId === day.id
       );
       if (matchedFave) {
-        return fetch(`http://localhost:8088/favorites/${matchedFave.id}`, {
+        return fetch(`https://mm-app-ej7qy.ondigitalocean.app//favorites/${matchedFave.id}`, {
           method: "DELETE",
         }).then(() => {
           getUserFavorites(userId).then((data) => setUserFaves(data));
@@ -160,7 +160,7 @@ export const WeekDisplay = () => {
     return (
       <Link
         onClick={() => {
-          fetch(`http://localhost:8088/menus/${menu?.id}`, {
+          fetch(`https://mm-app-ej7qy.ondigitalocean.app//menus/${menu?.id}`, {
             method: "DELETE",
           }).then(() => {
             resetMenus();
