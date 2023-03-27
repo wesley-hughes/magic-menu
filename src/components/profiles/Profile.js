@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SaveProfileModal } from "../modals/SaveProfileModal";
 
 export const Profile = () => {
-  const navigate = useNavigate();
   const [saveModal, setSaveModal] = useState(false);
   const [user, assignUser] = useState({
     id: 0,
     email: "",
+    vegetarian: false,
+    vegan: false,
+    glutenFree: false,
+    dairyFree: false
   });
   const localMagicUser = localStorage.getItem("magic_user");
   const magicUserObject = JSON.parse(localMagicUser);
@@ -35,7 +38,7 @@ export const Profile = () => {
         <input
           type="checkbox"
           className="toggle toggle-lg mx-auto toggle-primary"
-          value={true}
+          value={user?.vegetarian || 0}
           checked
           onChange={(event) => {
             handleVegetarianCheck(event);
@@ -47,7 +50,7 @@ export const Profile = () => {
         <input
           type="checkbox"
           className="toggle toggle-lg mx-auto"
-          value={false}
+          value={user?.vegetarian || 0}
           onChange={(event) => {
             handleVegetarianCheck(event);
           }}
@@ -62,12 +65,12 @@ export const Profile = () => {
   };
 
   const checkboxVegan = (user) => {
-    if (user.vegan === true) {
+    if (user?.vegan === true) {
       return (
         <input
           type="checkbox"
           className="toggle toggle-lg mx-auto toggle-primary"
-          value={true}
+          value={user?.vegan || 0}
           checked
           onChange={(event) => {
             handleVeganCheck(event);
@@ -79,7 +82,7 @@ export const Profile = () => {
         <input
           type="checkbox"
           className="toggle toggle-lg mx-auto"
-          value={false}
+          value={user?.vegan || 0}
           onChange={(event) => {
             handleVeganCheck(event);
           }}
@@ -94,12 +97,12 @@ export const Profile = () => {
   };
 
   const checkboxGlutenFree = (user) => {
-    if (user.glutenFree === true) {
+    if (user?.glutenFree === true) {
       return (
         <input
           type="checkbox"
           className="toggle toggle-lg mx-auto toggle-primary"
-          value={true}
+          value={user?.glutenFree || 0}
           checked
           onChange={(event) => {
             handleGlutenFreeCheck(event);
@@ -111,7 +114,7 @@ export const Profile = () => {
         <input
           type="checkbox"
           className="toggle toggle-lg mx-auto"
-          value={false}
+          value={user?.glutenFree || 0}
           onChange={(event) => {
             handleGlutenFreeCheck(event);
           }}
@@ -126,12 +129,12 @@ export const Profile = () => {
   };
 
   const checkboxDairyFree = (user) => {
-    if (user.dairyFree === true) {
+    if (user?.dairyFree === true) {
       return (
         <input
           className="toggle toggle-lg mx-auto toggle-primary"
           type="checkbox"
-          value={true}
+          value={user?.dairyFree || 0}
           checked
           onChange={(event) => {
             handleDairyFreeCheck(event);
@@ -143,7 +146,7 @@ export const Profile = () => {
         <input
           type="checkbox"
           className="toggle toggle-lg mx-auto"
-          value={false}
+          value={user?.dairyFree || 0}
           onChange={(event) => {
             handleDairyFreeCheck(event);
           }}
@@ -175,7 +178,7 @@ export const Profile = () => {
 
   return (
     <>
-      <form className="md:w-[33%] mx-auto mt-[60px] text-3xl h-screen">
+      <form className="md:w-[33%] mx-auto lg:mt-[60px] sm:mt-[95px] text-3xl h-screen">
         <div className="text-purple-900 text-4xl font-bold text-center mt-[60px] leading-tight tracking-tight">
           My Dietary Requirements
         </div>
@@ -184,7 +187,7 @@ export const Profile = () => {
             <label htmlFor="email">Email</label>
             <input
               type="text"
-              value={user.email}
+              defaultValue={user?.email || ""}
               onChange={(evt) => {
                 const copy = { ...user };
                 copy.email = evt.target.value;
