@@ -35,7 +35,7 @@ export const RecipeModal = ({ visible, recipe, onClose }) => {
 
   if (!visible) return null;
   return (
-    <div key={recipe.id} className="fixed inset-y-[80px] border border-purple-900 rounded-xl shadow-md drop-shadow-md p-1 bg-gray-50  backdrop-blur-sm overflow-y-auto scroll-smooth">
+    <div key={recipe.id} className="fixed inset-y-[80px] sm:inset-y-[160px] sm:mt-10 border border-purple-900 rounded-xl shadow-md drop-shadow-md p-1 bg-gray-50  backdrop-blur-sm overflow-y-auto scroll-smooth">
       <Link
         onClick={onClose}
       >
