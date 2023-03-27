@@ -65,7 +65,7 @@ export const FavoriteModal = ({ Fave, handleFaveClose }) => {
 
         <div className="grid grid-cols-2 text-left">
           {ingredients?.map((ingredient) => {
-            return <div className="leading-tight tracking-tight text-sm text-purple-800">{ingredient.original}</div>;
+            return <div key={ingredient.original} className="leading-tight tracking-tight text-sm text-purple-800">{ingredient.original}</div>;
           })}
         </div></article>
         <div className="m-1 w-[80%] h-[300px]">

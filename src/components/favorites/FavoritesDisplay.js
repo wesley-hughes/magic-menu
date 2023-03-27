@@ -55,14 +55,14 @@ export const FavoritesDisplay = ({ searchTermState }) => {
 
   return (
     <>
-      <div className="text-purple-700 text-4xl mb-[60px] text-center font-bold leading-tight tracking-tight">
+      <div className="text-purple-700 text-4xl lg:mb-[60px] sm:mb-[10px] lg:mt-auto sm:mt-[75px] text-center font-bold leading-tight tracking-tight">
         My Favorite Recipes
       </div>
-      <div className="carousel carousel-center bg-white bg-opacity-50 border border-purple-400 p-5">
+      <div className="carousel carousel-center w-full bg-white bg-opacity-50 border border-purple-400 p-5">
         {filteredFavorites.length < 1
           ? favorites.map((fave) => {
               return (
-                <div key={fave.id} className="carousel-item w-[25%]">
+                <div key={fave.id} className="carousel-item lg:w-[25%] sm:w-full">
                   <div className="flex flex-col bg-purple-100 m-3 p-3 border-2 border-purple-400 rounded-2xl justify-between space-y-3">
                     <div className="mx-auto">
                       <Link

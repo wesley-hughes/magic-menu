@@ -175,7 +175,7 @@ export const Profile = () => {
 
   return (
     <>
-      <form className="w-[33%] mx-auto mt-[60px] text-3xl h-screen">
+      <form className="md:w-[33%] mx-auto mt-[60px] text-3xl h-screen">
         <div className="text-purple-900 text-4xl font-bold text-center mt-[60px] leading-tight tracking-tight">
           My Dietary Requirements
         </div>

@@ -179,10 +179,10 @@ export const WeekDisplay = () => {
 
   return (
     <>
-      <div className="carousel carousel-center rounded-box">
+      <div className="carousel carousel-center rounded-box lg:mt-0 sm:mt-[90px]">
         {menus.map((menu) => {
           return (
-            <div key={menu?.id} className="p-2 carousel-item w-[85%]">
+            <div key={menu?.id} className="p-2 carousel-item lg:w-[85%] sm:w-full">
               {printMenu(menu)}
             </div>
             
@@ -190,7 +190,7 @@ export const WeekDisplay = () => {
         })}
          <RecipeModal
             recipe={Day}
-            handleClose={handleClose}
+            onClose={handleClose}
             visible={modal}
           ></RecipeModal>
       </div>
