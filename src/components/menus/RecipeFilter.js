@@ -13,7 +13,7 @@ export const RecipeFilter = () => {
 
     const localMagicUser = localStorage.getItem("magic_user");
     const magicUserObject = JSON.parse(localMagicUser);
-    const userId = parseInt(magicUserObject.userId);
+    const userId = parseInt(magicUserObject.id);
   
     useEffect(() => {
       getUser(userId).then((data) => setUser(data[0]));
@@ -23,7 +23,7 @@ export const RecipeFilter = () => {
     useEffect(() => {
       let filtered = [...recipes];
       if (user.vegetarian === true) {
-        filtered = recipes.filter((recipe) => recipe.vegetarian);
+        filtered = recipes.filter((recipe) => recipe?.vegetarian);
         setFiltered1(filtered)
       }
       else{setFiltered1(recipes)}
@@ -31,7 +31,7 @@ export const RecipeFilter = () => {
     useEffect(() => {
       let filtered2 = [...filter1];
       if (user.vegan === true) {
-        filtered2 = filter1.filter((recipe) => recipe.vegan);
+        filtered2 = filter1.filter((recipe) => recipe?.vegan);
         setFiltered2(filtered2)
       }
       else{setFiltered2(filter1)}
@@ -39,7 +39,7 @@ export const RecipeFilter = () => {
     useEffect(() => {
       let filtered3 = [...filter2];
       if (user.glutenFree === true) {
-        filtered3 = filter2.filter((recipe) => recipe.glutenFree);
+        filtered3 = filter2.filter((recipe) => recipe?.glutenFree);
         setFiltered3(filtered3)
       }
       else{setFiltered3(filter2)}
@@ -47,7 +47,7 @@ export const RecipeFilter = () => {
     useEffect(() => {
       let filtered4 = [...filter3];
       if (user.dairyFree === true) {
-        filtered4 = filter3.filter((recipe) => recipe.dairyFree);
+        filtered4 = filter3.filter((recipe) => recipe?.dairyFree);
         setFiltered4(filtered4)
       }
       else{setFiltered4(filter3)}
