@@ -23,7 +23,7 @@ export const Register = () => {
                     localStorage.setItem("magic_user", JSON.stringify({
                         id: createdUser.id
                     }))
-                    navigate("/")
+                    navigate("/home")
                 }
             })
     }
