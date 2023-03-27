@@ -26,6 +26,8 @@ export const WeekBuilder = ({
   thursdayRecipe,
   fridayRecipe,
   saturdayRecipe,
+  printMealType,
+  selectMealType
 }) => {
   const [SunModal, setSunModal] = useState(false);
   const [MonModal, setMonModal] = useState(false);
@@ -101,10 +103,11 @@ export const WeekBuilder = ({
 
   return (
     <>
-      <div className="pl-8 pr-8 pb-8  h-full">
+      <div className="pl-8 pr-8 pb-8 h-full lg:mt-24 sm:mt-[180px]">
+        
         <form>
           <h2 className="text-purple-900 text-4xl -mt-[87px] font-bold leading-tight tracking-tight">Build your Menu</h2>
-          <fieldset className="bg-opacity-80 rounded-2xl bg-blue-100 -ml-1 mt-2 pl-2 w-[230px] text-lg text-left">
+          <fieldset className="sm:w-full lg:w-[25%] rounded-2xl bg-blue-100 mt-2 pl-2 w-[230px] text-lg text-center">
             <label
               className=" text-left mr-2 text-purple-800 bg-opacity-80"
               htmlFor="date"
@@ -122,6 +125,9 @@ export const WeekBuilder = ({
               }}
               type="date"
             ></input>
+          </fieldset>
+          <fieldset>
+            {printMealType(selectMealType)}
           </fieldset>
           <div className="flex flex-wrap mt-8 justify-center mx-auto w-[80%]">
             <fieldset>

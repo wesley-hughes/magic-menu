@@ -3,12 +3,12 @@ export const Home = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex flex-col ml-[200px] mt-[90px] h-screen">
-        <div className="text-[200px] -rotate-12 text-purple-700 drop-shadow-md login-title">
+      <div className="flex flex-col items-center mt-[10%] h-screen   sm:flex-wrap">
+        <div className="lg:text-[1000%] -rotate-12 text-purple-700 drop-shadow-md login-title text-center sm:mb-12 sm:text-[600%]">
           Let's get cooking...
         </div>
         <button
-          className="btn btn-outline btn-secondary -mt-[30px] ml-[550px] bg-white bg-opacity-80 w-[300px] pt-1 animate-bounce"
+          className="btn btn-outline btn-secondary bg-white bg-opacity-80 animate-bounce"
           onClick={() => {
             navigate("/menu");
           }}

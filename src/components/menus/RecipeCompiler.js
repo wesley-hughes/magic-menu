@@ -183,20 +183,24 @@ export const RecipeCompiler = ({ filtered }) => {
     setTypeFilter(event.target.value)
   }
 
+  const printMealType = (selectMealType, event) => {
+    return <select
+    onChange={(event) => {
+      selectMealType(event);
+    }}
+    className="rounded-2xl py-1 mt-2 sm:w-full lg:w-[25%] bg-blue-100 text-purple-600 text-lg text-center"
+  >
+    <option value="">Select Recipe Type</option>
+    <option value="main course">Main</option>
+    <option value="side dish">Side</option>
+    <option value="lunch">Lunch</option>
+    <option value="dinner">Dinner</option>
+  </select>
+  }
+
   return (
     <>
-      <select
-        onChange={(event) => {
-          selectMealType(event);
-        }}
-        className="mt-[80px] ml-[275px] bg-opacity-80 rounded-2xl bg-blue-100 text-purple-600 h-[34px] pl-2 w-[230px] text-lg text-left"
-      >
-        <option value="">Select Recipe Type</option>
-        <option value="main course">Main</option>
-        <option value="side dish">Side</option>
-        <option value="lunch">Lunch</option>
-        <option value="dinner">Dinner</option>
-      </select>
+      
       <WeekBuilder
         key={`menu`}
         sundayRecipe={sundayRecipe}
@@ -214,6 +218,8 @@ export const RecipeCompiler = ({ filtered }) => {
         resetFriday={resetFriday}
         resetSaturday={resetSaturday}
         recipes={filteredRecipes}
+        selectMealType={selectMealType}
+        printMealType={printMealType}
       ></WeekBuilder>
       {/* <Reset key={`reset`} */};
     </>

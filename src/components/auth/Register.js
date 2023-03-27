@@ -52,12 +52,12 @@ export const Register = () => {
 
     return (
         <main className="flex flex-col items-center justify-center px-6 py-8 mx-auto body fixed inset-0"> 
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+        <div className="flex flex-col items-center justify-center px-6 py-8 lg:mx-auto">
         <div className="flex items-center mb-6 font-semibold text-purple-900 dark:text-white">
             <img className="w-14 h-14 mr-2 animate-pulse" src="/images/crystal-ball.png" alt="logo" />
-           <div className="login-title text-8xl text-purple-200 drop-shadow-md font-light">MagicMenu</div>   
+           <div className="login-title lg:text-8xl sm:text-5xl text-purple-200 drop-shadow-md font-light">MagicMenu</div>   
         </div>
-        <div className="w-[800px] bg-white bg-opacity-75 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="lg:w-[800px] sm:w-full bg-white bg-opacity-75 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-3xl font-bold leading-tight tracking-tight text-purple-700">
                     Please Register
