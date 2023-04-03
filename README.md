@@ -29,4 +29,5 @@ Necessary to install Tailwind CSS and daisyUI-- installation instruction links b
 * Stacking filters in one useEffect created errors and did not fire properly, so had to divide into separates and watch existing filters.
 
 ## Public URL
+* https://magicmenu.online/
 <img width="1505" alt="Login" src="https://user-images.githubusercontent.com/115202706/229557345-8851a113-70e2-4a68-abc7-2780ce5878ae.png">
