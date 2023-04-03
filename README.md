@@ -20,8 +20,8 @@ Update your email and dietary needs here.
 
 ## Installation
 Necessary to install Tailwind CSS and daisyUI-- installation instruction links below.
-https://tailwindcss.com/docs/guides/create-react-app
-https://daisyui.com/docs/install/
+* https://tailwindcss.com/docs/guides/create-react-app
+* https://daisyui.com/docs/install/
 
 ## Challenges
 The number of filters required to filter through each diet restriction and each day of the week in builder-- many filters stacked across two components.
