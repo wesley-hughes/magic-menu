@@ -6,11 +6,7 @@ export const Profile = () => {
   const [saveModal, setSaveModal] = useState(false);
   const [user, assignUser] = useState({
     id: 0,
-    email: "",
-    vegetarian: false,
-    vegan: false,
-    glutenFree: false,
-    dairyFree: false
+    email: ""
   });
   const localMagicUser = localStorage.getItem("magic_user");
   const magicUserObject = JSON.parse(localMagicUser);
@@ -26,134 +22,35 @@ export const Profile = () => {
   }, [userId]);
 
   const handleSaveClose = () => setSaveModal(false);
+  
   const handleVegetarianCheck = (event) => {
     let copy = { ...user };
     copy.vegetarian = event.target.checked;
     assignUser(copy);
   };
 
-  const checkboxVegetarian = (user) => {
-    if (user.vegetarian === true) {
-      return (
-        <input
-          type="checkbox"
-          className="toggle toggle-lg mx-auto toggle-primary"
-          value={user?.vegetarian || 0}
-          checked
-          onChange={(event) => {
-            handleVegetarianCheck(event);
-          }}
-        ></input>
-      );
-    } else {
-      return (
-        <input
-          type="checkbox"
-          className="toggle toggle-lg mx-auto"
-          value={user?.vegetarian || 0}
-          onChange={(event) => {
-            handleVegetarianCheck(event);
-          }}
-        ></input>
-      );
-    }
-  };
+
   const handleVeganCheck = (event) => {
     let copy = { ...user };
     copy.vegan = event.target.checked;
     assignUser(copy);
   };
 
-  const checkboxVegan = (user) => {
-    if (user?.vegan === true) {
-      return (
-        <input
-          type="checkbox"
-          className="toggle toggle-lg mx-auto toggle-primary"
-          value={user?.vegan || 0}
-          checked
-          onChange={(event) => {
-            handleVeganCheck(event);
-          }}
-        ></input>
-      );
-    } else {
-      return (
-        <input
-          type="checkbox"
-          className="toggle toggle-lg mx-auto"
-          value={user?.vegan || 0}
-          onChange={(event) => {
-            handleVeganCheck(event);
-          }}
-        ></input>
-      );
-    }
-  };
   const handleGlutenFreeCheck = (event) => {
     let copy = { ...user };
     copy.glutenFree = event.target.checked;
     assignUser(copy);
   };
 
-  const checkboxGlutenFree = (user) => {
-    if (user?.glutenFree === true) {
-      return (
-        <input
-          type="checkbox"
-          className="toggle toggle-lg mx-auto toggle-primary"
-          value={user?.glutenFree || 0}
-          checked
-          onChange={(event) => {
-            handleGlutenFreeCheck(event);
-          }}
-        ></input>
-      );
-    } else {
-      return (
-        <input
-          type="checkbox"
-          className="toggle toggle-lg mx-auto"
-          value={user?.glutenFree || 0}
-          onChange={(event) => {
-            handleGlutenFreeCheck(event);
-          }}
-        ></input>
-      );
-    }
-  };
+
+
   const handleDairyFreeCheck = (event) => {
     let copy = { ...user };
     copy.dairyFree = event.target.checked;
     assignUser(copy);
   };
 
-  const checkboxDairyFree = (user) => {
-    if (user?.dairyFree === true) {
-      return (
-        <input
-          className="toggle toggle-lg mx-auto toggle-primary"
-          type="checkbox"
-          value={user?.dairyFree || 0}
-          checked
-          onChange={(event) => {
-            handleDairyFreeCheck(event);
-          }}
-        ></input>
-      );
-    } else {
-      return (
-        <input
-          type="checkbox"
-          className="toggle toggle-lg mx-auto"
-          value={user?.dairyFree || 0}
-          onChange={(event) => {
-            handleDairyFreeCheck(event);
-          }}
-        ></input>
-      );
-    }
-  };
+
 
   const handleSaveButtonClick = (event) => {
     event.preventDefault();
@@ -178,6 +75,7 @@ export const Profile = () => {
 
   return (
     <>
+    {user.email !== "" ? 
       <form className="md:w-[33%] mx-auto lg:mt-[60px] sm:mt-[95px] text-3xl h-screen">
         <div className="text-purple-900 text-4xl font-bold text-center mt-[60px] leading-tight tracking-tight">
           My Dietary Requirements
@@ -187,7 +85,7 @@ export const Profile = () => {
             <label htmlFor="email">Email</label>
             <input
               type="text"
-              defaultValue={user?.email || ""}
+              value={user?.email}
               onChange={(evt) => {
                 const copy = { ...user };
                 copy.email = evt.target.value;
@@ -196,29 +94,62 @@ export const Profile = () => {
               className="input input-bordered input-primary w-full text-xl"
             ></input>
           </fieldset>
+         
           <fieldset className="grid grid-cols-2 my-5 items-center">
-            <label className="" htmlFor="vegetarian">
+            <label className="" htmlFor="Vegetarian">
               Vegetarian
             </label>
-            {user ? checkboxVegetarian(user) : ""}
+            <input
+          type="checkbox"
+          className="toggle toggle-lg mx-auto toggle-primary"
+          
+          checked={user?.vegetarian}
+          onChange={(event) => {
+            handleVegetarianCheck(event);
+          }}
+        ></input>
           </fieldset>
           <fieldset className="grid grid-cols-2 my-5 items-center">
             <label className="" htmlFor="Vegan">
               Vegan
             </label>
-            {user ? checkboxVegan(user) : ""}
-          </fieldset>
-          <fieldset className="grid grid-cols-2 my-5 items-center">
-            <label className="" htmlFor="GlutenFree">
-              GlutenFree
-            </label>
-            {user ? checkboxGlutenFree(user) : ""}
+            <input
+          type="checkbox"
+          className="toggle toggle-lg mx-auto toggle-primary"
+          
+          checked={user?.vegan}
+          onChange={(event) => {
+            handleVeganCheck(event);
+          }}
+        ></input>
           </fieldset>
           <fieldset className="grid grid-cols-2 my-5 items-center">
             <label className="" htmlFor="DairyFree">
               DairyFree
             </label>
-            {user ? checkboxDairyFree(user) : ""}
+            <input
+          type="checkbox"
+          className="toggle toggle-lg mx-auto toggle-primary"
+          
+          checked={user?.dairyFree}
+          onChange={(event) => {
+            handleDairyFreeCheck(event);
+          }}
+        ></input>
+          </fieldset>
+          <fieldset className="grid grid-cols-2 my-5 items-center">
+            <label className="" htmlFor="GlutenFree">
+              GlutenFree
+            </label>
+            <input
+          type="checkbox"
+          className="toggle toggle-lg mx-auto toggle-primary"
+          
+          checked={user?.glutenFree}
+          onChange={(event) => {
+            handleGlutenFreeCheck(event);
+          }}
+        ></input>
           </fieldset>
 
           <Link
@@ -232,8 +163,8 @@ export const Profile = () => {
             ></img>
           </Link>
         </div>
-      </form>
-      <SaveProfileModal onClose={handleSaveClose} visible={saveModal} />
+      </form>: ""}
+      <SaveProfileModal onClose={handleSaveClose} visible={saveModal} /> 
     </>
   );
 };

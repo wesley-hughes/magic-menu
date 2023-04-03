@@ -1,6 +1,5 @@
 import { Outlet, Route, Routes } from "react-router-dom";
 import { WeekBuilder } from "../menus/WeekBuilder";
-import { RecipeCompiler } from "../menus/RecipeCompiler";
 import { WeekDisplay } from "../menus/WeekDisplay";
 import { Profile } from "../profiles/Profile";
 import { RecipeFilter } from "../menus/RecipeFilter";
