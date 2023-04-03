@@ -24,9 +24,9 @@ Necessary to install Tailwind CSS and daisyUI-- installation instruction links b
 * https://daisyui.com/docs/install/
 
 ## Challenges
-The number of filters required to filter through each diet restriction and each day of the week in builder-- many filters stacked across two components.
-In original wireframe intended to randomize individual days. However as generating each subsequent day is dependent on filtered recipe list from day before, when randomize button clicked on individual day all subsequent weekdays also randomize.
-Stacking filters in one useEffect created errors and did not fire properly, so had to divide into separates and watch existing filters.
+* The number of filters required to filter through each diet restriction and each day of the week in builder-- many filters stacked across two components.
+* In original wireframe intended to randomize individual days. However as generating each subsequent day is dependent on filtered recipe list from day before, when randomize button clicked on individual day all subsequent weekdays also randomize.
+* Stacking filters in one useEffect created errors and did not fire properly, so had to divide into separates and watch existing filters.
 
 ## Public URL
 <img width="1505" alt="Login" src="https://user-images.githubusercontent.com/115202706/229557345-8851a113-70e2-4a68-abc7-2780ce5878ae.png">
