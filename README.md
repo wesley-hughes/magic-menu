@@ -6,7 +6,7 @@ Generates a week of random recipes. Allows the user to save favorite recipes and
 
 ## How it works
 ### Builder
-Create a week of recipes using the buttons to build out week. Can filter by mealtype for main courses, small plates lunches, and dinners. Date must be selected in order to save.
+Create a week of recipes using the buttons to build out week. Can filter by mealtype for main courses, sides, lunches, and dinners. Date must be selected in order to save.
 <img width="1512" alt="Builder" src="https://user-images.githubusercontent.com/115202706/229541202-31623631-5a95-41e5-8719-2f16cc7e7bf4.png"/>
 ### Saved Weeks
 Review saved weeks and favorite the recipes you would like to keep in rotation. Delete weeks once you are done with them.
