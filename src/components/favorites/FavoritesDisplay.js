@@ -40,7 +40,7 @@ export const FavoritesDisplay = ({ searchTermState }) => {
     return (
       <Link
         onClick={() => {
-          fetch(`https://mm-app-ej7qy.ondigitalocean.app/favorites/${fave.id}`, {
+          fetch(`http://localhost:8088/favorites/${fave.id}`, {
             method: "DELETE",
           }).then(() => {
             getUserFavorites(userId).then((data) => setFavorites(data));
@@ -77,7 +77,7 @@ export const FavoritesDisplay = ({ searchTermState }) => {
 
                     <Link
                       onClick={(event) => handleClickEvent(event, fave)}
-                      className="text-blue-600 mx-auto underline text-lg leading-tight tracking-tight"
+                      className="text-blue-600 mx-auto hover:text-purple-500 hover:underline text-lg leading-tight tracking-tight"
                     >
                       {fave.recipe?.title}
                     </Link>
@@ -104,7 +104,7 @@ export const FavoritesDisplay = ({ searchTermState }) => {
 
                     <Link
                       onClick={(event) => handleClickEvent(event, fave)}
-                      className="text-blue-600 mx-auto underline text-lg leading-tight tracking-tight"
+                      className="text-blue-600 hover:text-purple-500 hover:underline mx-auto  text-lg leading-tight tracking-tight"
                     >
                       {fave.recipe?.title}
                     </Link>

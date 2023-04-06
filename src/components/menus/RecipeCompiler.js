@@ -29,26 +29,6 @@ export const RecipeCompiler = ({ filtered }) => {
   useEffect(() => {
     if (filteredRecipes.length > 0) {
       setSundayRecipe(getRecipeObject(filteredRecipes));
-      // setTueFiltered(
-      //   MonFiltered.filter((recipe) => recipe.id !== mondayRecipe.id)
-      // );
-      // setTuesdayRecipe(getRecipeObject(TueFiltered));
-      // setWedFiltered(TueFiltered.filter(
-      //   (recipe) => recipe.id !== tuesdayRecipe.id
-      // ))
-      // setWednesdayRecipe(getRecipeObject(WedFiltered));
-      // setThuFiltered(WedFiltered.filter(
-      //   (recipe) => recipe.id !== wednesdayRecipe.id
-      // ))
-      // setThursdayRecipe(getRecipeObject(ThuFiltered));
-      // setFriFiltered(ThuFiltered.filter(
-      //   (recipe) => recipe.id !== thursdayRecipe.id
-      // ));
-      // setFridayRecipe(getRecipeObject(FriFiltered));
-      // setSatFiltered(FriFiltered.filter(
-      //   (recipe) => recipe.id !== fridayRecipe.id
-      // ));
-      // setSaturdayRecipe(getRecipeObject(SatFiltered));
     }
   }, [filteredRecipes]);
 
@@ -63,7 +43,7 @@ export const RecipeCompiler = ({ filtered }) => {
   useEffect(() => {
     if (mondayRecipe !== {}) {
       setTueFiltered(
-        MonFiltered.filter((recipe) => recipe.id !== mondayRecipe?.id)
+        MonFiltered.filter((recipe) => recipe.id !== mondayRecipe.id)
       );
     }
   }, [mondayRecipe, MonFiltered]);
@@ -71,7 +51,7 @@ export const RecipeCompiler = ({ filtered }) => {
   useEffect(() => {
     if (tuesdayRecipe !== {}) {
       setWedFiltered(
-        TueFiltered.filter((recipe) => recipe.id !== tuesdayRecipe?.id)
+        TueFiltered.filter((recipe) => recipe.id !== tuesdayRecipe.id)
       );
     }
   }, [tuesdayRecipe, TueFiltered]);
@@ -79,7 +59,7 @@ export const RecipeCompiler = ({ filtered }) => {
   useEffect(() => {
     if (wednesdayRecipe !== {}) {
       setThuFiltered(
-        WedFiltered.filter((recipe) => recipe.id !== wednesdayRecipe?.id)
+        WedFiltered.filter((recipe) => recipe.id !== wednesdayRecipe.id)
       );
     }
   }, [wednesdayRecipe, WedFiltered]);
@@ -87,7 +67,7 @@ export const RecipeCompiler = ({ filtered }) => {
   useEffect(() => {
     if (thursdayRecipe !== {}) {
       setFriFiltered(
-        ThuFiltered.filter((recipe) => recipe.id !== thursdayRecipe?.id)
+        ThuFiltered.filter((recipe) => recipe.id !== thursdayRecipe.id)
       );
     }
   }, [thursdayRecipe, ThuFiltered]);
@@ -95,7 +75,7 @@ export const RecipeCompiler = ({ filtered }) => {
   useEffect(() => {
     if (fridayRecipe !== {}) {
       setSatFiltered(
-        FriFiltered.filter((recipe) => recipe.id !== fridayRecipe?.id)
+        FriFiltered.filter((recipe) => recipe.id !== fridayRecipe.id)
       );
     }
   }, [fridayRecipe, FriFiltered]);

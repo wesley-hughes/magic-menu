@@ -38,7 +38,7 @@ export const WeekDisplay = () => {
     );
     if (matchedFave) {
       return fetch(
-        `https://mm-app-ej7qy.ondigitalocean.app/favorites/${matchedFave.id}`,
+        `http://localhost:8088/favorites/${matchedFave.id}`,
         {
           method: "DELETE",
         }
@@ -101,7 +101,7 @@ export const WeekDisplay = () => {
                 onClick={(event) => {
                   handleRecipeClick(event, day);
                 }}
-                className="w-[80%] text-blue-600 underline leading-tight "
+                className="w-[80%] text-blue-600 hover:text-purple-500 hover:underlineleading-tight "
               >
                 {day?.title}
               </Link>
@@ -169,7 +169,7 @@ export const WeekDisplay = () => {
     return (
       <Link
         onClick={() => {
-          fetch(`https://mm-app-ej7qy.ondigitalocean.app/menus/${menu?.id}`, {
+          fetch(`http://localhost:8088/menus/${menu?.id}`, {
             method: "DELETE",
           }).then(() => {
             resetMenus();
