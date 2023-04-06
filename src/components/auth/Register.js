@@ -4,8 +4,12 @@ import { useNavigate } from "react-router-dom"
 export const Register = () => {
     const [user, setUser] = useState({
         email: "",
-        fullName: "",
-        password: ""
+        name: "",
+        password: "",
+        vegetarian: false,
+        vegan: false,
+        dairyFree: false,
+        glutenFree: false
     })
     let navigate = useNavigate()
 
@@ -64,9 +68,9 @@ export const Register = () => {
                 </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleRegister}>
                 <fieldset>
-                    <label htmlFor="fullName" className="block mb-2  font-medium text-blue-700 dark:text-white"> Full Name </label>
+                    <label htmlFor="name" className="block mb-2  font-medium text-blue-700 dark:text-white"> Full Name </label>
                     <input onChange={updateUser}
-                           type="text" id="fullName" className="input input-bordered input-primary    border-gray-300 text-purple-900 sm:text-sm rounded-lg  block w-full p-2.5 "
+                           type="text" id="name" className="input input-bordered input-primary    border-gray-300 text-purple-900 sm:text-sm rounded-lg  block w-full p-2.5 "
                            placeholder="Enter your name" required autoFocus />
                 </fieldset>
                 <fieldset>

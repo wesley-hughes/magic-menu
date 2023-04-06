@@ -49,13 +49,13 @@ export const WeekBuilder = ({
     const weekToSendToApi = {
       userId: magicUserObject.id,
       date: date,
-      sundayRecipe: sundayRecipe?.id,
-      mondayRecipe: mondayRecipe?.id,
-      tuesdayRecipe: tuesdayRecipe?.id,
-      wednesdayRecipe: wednesdayRecipe?.id,
-      thursdayRecipe: thursdayRecipe?.id,
-      fridayRecipe: fridayRecipe?.id,
-      saturdayRecipe: saturdayRecipe?.id,
+      sundayRecipe: sundayRecipe.id,
+      mondayRecipe: mondayRecipe.id,
+      tuesdayRecipe: tuesdayRecipe.id,
+      wednesdayRecipe: wednesdayRecipe.id,
+      thursdayRecipe: thursdayRecipe.id,
+      fridayRecipe: fridayRecipe.id,
+      saturdayRecipe: saturdayRecipe.id,
     };
 
     postMenu(weekToSendToApi).then(() => {
@@ -139,9 +139,9 @@ export const WeekBuilder = ({
                   Sunday:
                 </label>
 
-                <div className="my-1 text-blue-500 underline" value={sundayRecipe}>
+                <div className="my-1 text-blue-500 hover:text-purple-500 hover:underline" value={sundayRecipe}>
                   <Link onClick={() => setSunModal(true)}>
-                    {sundayRecipe?.title}
+                    {sundayRecipe.title}
                   </Link>
                 </div>
 
@@ -161,9 +161,9 @@ export const WeekBuilder = ({
                 >
                   Monday:
                 </label>
-                <div className="my-1 text-blue-500 underline" value={mondayRecipe}>
+                <div className="my-1 text-blue-500 hover:text-purple-500 hover:underline" value={mondayRecipe}>
                   <Link onClick={() => setMonModal(true)}>
-                    {mondayRecipe?.title}
+                    {mondayRecipe.title}
                   </Link>
                 </div>
                 <Link
@@ -181,9 +181,9 @@ export const WeekBuilder = ({
                 >
                   Tuesday:
                 </label>
-                <div className="my-1 text-blue-500 underline" value={tuesdayRecipe}>
+                <div className="my-1 text-blue-500 hover:text-purple-500 hover:underline" value={tuesdayRecipe}>
                   <Link onClick={() => setTueModal(true)}>
-                    {tuesdayRecipe?.title}
+                    {tuesdayRecipe.title}
                   </Link>
                 </div>
                 <Link
@@ -201,9 +201,9 @@ export const WeekBuilder = ({
                 >
                   Wednesday:
                 </label>
-                <div className="my-1 text-blue-500 underline" value={wednesdayRecipe}>
+                <div className="my-1 text-blue-500 hover:text-purple-500 hover:underline" value={wednesdayRecipe}>
                   <Link onClick={() => setWedModal(true)}>
-                    {wednesdayRecipe?.title}
+                    {wednesdayRecipe.title}
                   </Link>
                 </div>
                 <Link
@@ -221,9 +221,9 @@ export const WeekBuilder = ({
                 >
                   Thursday:
                 </label>
-                <div className="my-1 text-blue-500 underline" value={thursdayRecipe}>
+                <div className="my-1 text-blue-500 hover:text-purple-500 hover:underline" value={thursdayRecipe}>
                   <Link onClick={() => setThuModal(true)}>
-                    {thursdayRecipe?.title}
+                    {thursdayRecipe.title}
                   </Link>
                 </div>
                 <Link
@@ -241,9 +241,9 @@ export const WeekBuilder = ({
                 >
                   Friday:
                 </label>
-                <div className="my-1 text-blue-500 underline" value={fridayRecipe}>
+                <div className="my-1 text-blue-500 hover:text-purple-500 hover:underline" value={fridayRecipe}>
                   <Link onClick={() => setFriModal(true)}>
-                    {fridayRecipe?.title}
+                    {fridayRecipe.title}
                   </Link>
                 </div>
                 <Link
@@ -261,9 +261,9 @@ export const WeekBuilder = ({
                 >
                   Saturday:
                 </label>
-                <div className="my-1 text-blue-500 underline" value={saturdayRecipe}>
+                <div className="my-1 text-blue-500 hover:text-purple-500 hover:underline" value={saturdayRecipe}>
                   <Link onClick={() => setSatModal(true)}>
-                    {saturdayRecipe?.title}
+                    {saturdayRecipe.title}
                   </Link>
                 </div>
                 <Link

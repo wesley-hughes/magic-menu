@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 export const NavBar = () => {
   const navigate = useNavigate();
 
-  const localMagicUser = localStorage.getItem("magic_user");
-  const magicUserObject = JSON.parse(localMagicUser);
 
   return (
     <>

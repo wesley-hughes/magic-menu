@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   getMenus,
@@ -15,57 +15,60 @@ export const WeekDisplay = () => {
   const [modal, setModal] = useState(false);
   const [Day, setDay] = useState([]);
 
- 
   const localMagicUser = localStorage.getItem("magic_user");
   const magicUserObject = JSON.parse(localMagicUser);
   const userId = parseInt(magicUserObject.id);
-  
-  const resetMenus = () => {
-    getMenus(parseInt(magicUserObject.id)).then((data) => setMenus(data));
-  };
-  
+
+  const resetMenus = useCallback(
+    () => getMenus(parseInt(userId)).then((data) => setMenus(data)),
+    [userId]
+  );
+
   useEffect(() => {
     getAllRecipes().then((data) => setRecipes(data));
     resetMenus();
   }, [resetMenus]);
-  
+
   useEffect(() => {
     getUserFavorites(userId).then((data) => setUserFaves(data));
   }, [userId]);
   const handleFavoriteButtonClick = (day) => {
     let matchedFave = userFaves.find(
       (userFave) => userFave.recipeId === day.id
-      );
-      if (matchedFave) {
-        return fetch(`https://mm-app-ej7qy.ondigitalocean.app/favorites/${matchedFave.id}`, {
+    );
+    if (matchedFave) {
+      return fetch(
+        `http://localhost:8088/favorites/${matchedFave.id}`,
+        {
           method: "DELETE",
-        }).then(() => {
-          getUserFavorites(userId).then((data) => setUserFaves(data));
-        });
-      } else {
-        const newFavorite = {
-          userId: userId,
-          recipeId: day.id,
-        };
-        
-        postFavorite(newFavorite).then(() => {
-          getUserFavorites(userId).then((data) => setUserFaves(data));
-        });
-      }
-    };
-    
-    const handleClose = () => setModal(false);
-    const printMenu = (menu) => {
-      let Sunday = recipes.find((recipe) => recipe.id === menu?.sundayRecipe);
-      let Monday = recipes.find((recipe) => recipe.id === menu?.mondayRecipe);
-      let Tuesday = recipes.find((recipe) => recipe.id === menu?.tuesdayRecipe);
-      let Wednesday = recipes.find(
-        (recipe) => recipe.id === menu?.wednesdayRecipe
-        );
-        let Thursday = recipes.find((recipe) => recipe.id === menu?.thursdayRecipe);
-        let Friday = recipes.find((recipe) => recipe.id === menu?.fridayRecipe);
-        let Saturday = recipes.find((recipe) => recipe.id === menu?.saturdayRecipe);
-        const printDay = (day) => {
+        }
+      ).then(() => {
+        getUserFavorites(userId).then((data) => setUserFaves(data));
+      });
+    } else {
+      const newFavorite = {
+        userId: userId,
+        recipeId: day.id,
+      };
+
+      postFavorite(newFavorite).then(() => {
+        getUserFavorites(userId).then((data) => setUserFaves(data));
+      });
+    }
+  };
+
+  const handleClose = () => setModal(false);
+  const printMenu = (menu) => {
+    let Sunday = recipes.find((recipe) => recipe.id === menu?.sundayRecipe);
+    let Monday = recipes.find((recipe) => recipe.id === menu?.mondayRecipe);
+    let Tuesday = recipes.find((recipe) => recipe.id === menu?.tuesdayRecipe);
+    let Wednesday = recipes.find(
+      (recipe) => recipe.id === menu?.wednesdayRecipe
+    );
+    let Thursday = recipes.find((recipe) => recipe.id === menu?.thursdayRecipe);
+    let Friday = recipes.find((recipe) => recipe.id === menu?.fridayRecipe);
+    let Saturday = recipes.find((recipe) => recipe.id === menu?.saturdayRecipe);
+    const printDay = (day) => {
       const handleRecipeClick = (event, day) => {
         event.preventDefault();
         setDay(day);
@@ -85,25 +88,32 @@ export const WeekDisplay = () => {
                 className="w-8"
               >
                 {matchedFave ? (
-                  <img className="h-9" src="./images/fave.png" />
+                  <img className="h-9" src="./images/fave.png" alt="cauldron" />
                 ) : (
-                  <img className="h-9" src="./images/unfave.png" />
+                  <img
+                    className="h-9"
+                    src="./images/unfave.png"
+                    alt="cauldron"
+                  />
                 )}
               </Link>
               <Link
                 onClick={(event) => {
                   handleRecipeClick(event, day);
                 }}
-                className="w-[80%] text-blue-600 underline leading-tight "
+                className="w-[80%] text-blue-600 hover:text-purple-500 hover:underlineleading-tight "
               >
                 {day?.title}
               </Link>
             </div>
           </div>
           <div className="ml-2 w-[95%]">
-            <img className="w-full rounded-2xl" src={day?.image} alt="food"></img>
+            <img
+              className="w-full rounded-2xl"
+              src={day?.image}
+              alt="food"
+            ></img>
           </div>
-          
         </>
       );
     };
@@ -144,7 +154,6 @@ export const WeekDisplay = () => {
                 Saturday:
                 {printDay(Saturday)}
               </div>
-             
             </div>
             <div className="card-actions justify-start p-1">
               {deleteButton(menu)}
@@ -160,7 +169,7 @@ export const WeekDisplay = () => {
     return (
       <Link
         onClick={() => {
-          fetch(`https://mm-app-ej7qy.ondigitalocean.app/menus/${menu?.id}`, {
+          fetch(`http://localhost:8088/menus/${menu?.id}`, {
             method: "DELETE",
           }).then(() => {
             resetMenus();
@@ -182,17 +191,19 @@ export const WeekDisplay = () => {
       <div className="carousel carousel-center rounded-box lg:mt-0 sm:mt-[90px]">
         {menus.map((menu) => {
           return (
-            <div key={menu?.id} className="p-2 carousel-item lg:w-[85%] sm:w-full">
+            <div
+              key={menu?.id}
+              className="p-2 carousel-item lg:w-[85%] sm:w-full"
+            >
               {printMenu(menu)}
             </div>
-            
           );
         })}
-         <RecipeModal
-            recipe={Day}
-            onClose={handleClose}
-            visible={modal}
-          ></RecipeModal>
+        <RecipeModal
+          recipe={Day}
+          onClose={handleClose}
+          visible={modal}
+        ></RecipeModal>
       </div>
     </>
   );
