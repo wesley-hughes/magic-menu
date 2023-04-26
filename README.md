@@ -4,6 +4,9 @@ An application for busy witches who choose to spend their spare time casting spe
 ## Description
 Generates a week of random recipes. Allows the user to save favorite recipes and save their weekly menus. The user profile enables the user to filter the pool of available recipes down to their own specific dietary requirements.
 
+## API
+https://github.com/wesley-hughes/mm-api
+
 ## How it works
 ### Builder
 Create a week of recipes using the buttons to build out week. Can filter by mealtype for main courses, sides, lunches, and dinners. Date must be selected in order to save.

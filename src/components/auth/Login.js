@@ -10,7 +10,9 @@ export const Login = () => {
     e.preventDefault();
 
     return fetch(
+
       `https://magic-menu-wlmtp.ondigitalocean.app//users?email=${email}&password=${password}`
+
     )
       .then((res) => res.json())
       .then((foundUsers) => {
