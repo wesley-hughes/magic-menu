@@ -13,7 +13,7 @@ export const Profile = () => {
   const userId = magicUserObject.id;
 
   useEffect(() => {
-    fetch(`http://localhost:8088/users?id=${userId}`)
+    fetch(`https://magic-menu-wlmtp.ondigitalocean.app//users?id=${userId}`)
       .then((response) => response.json())
       .then((data) => {
         const userObject = data[0];
@@ -50,7 +50,7 @@ export const Profile = () => {
   const handleSaveButtonClick = (event) => {
     event.preventDefault();
 
-    fetch(`http://localhost:8088/users/${user.id}`, {
+    fetch(`https://magic-menu-wlmtp.ondigitalocean.app//users/${user.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +59,7 @@ export const Profile = () => {
     })
       .then((response) => response.json())
       .then(() => {
-        fetch(`http://localhost:8088/users?id=${userId}`)
+        fetch(`https://magic-menu-wlmtp.ondigitalocean.app//users?id=${userId}`)
           .then((response) => response.json())
           .then((data) => {
             const userObject = data[0];
