@@ -14,7 +14,7 @@ export const Register = () => {
     let navigate = useNavigate()
 
     const registerNewUser = () => {
-        return fetch("https://mm-app-ej7qy.ondigitalocean.app/users", {
+        return fetch("https://magic-menu-wlmtp.ondigitalocean.app//users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -34,7 +34,7 @@ export const Register = () => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        return fetch(`https://mm-app-ej7qy.ondigitalocean.app/users?email=${user.email}`)
+        return fetch(`https://magic-menu-wlmtp.ondigitalocean.app//users?email=${user.email}`)
             .then(res => res.json())
             .then(response => {
                 if (response.length > 0) {

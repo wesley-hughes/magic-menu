@@ -1,11 +1,17 @@
 export const getAllRecipes = () => {
   return fetch(`
-    http://localhost:8088/recipes
+
+    https://magic-menu-wlmtp.ondigitalocean.app//recipes
+
     `).then((res) => res.json())
 }
 
 export const postMenu = (weekToSendToApi) => {
-  return fetch(`http://localhost:8088/menus`, {
+
+  return fetch(`https://magic-menu-wlmtp.ondigitalocean.app//menus`, {
+
+
+
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,32 +21,44 @@ export const postMenu = (weekToSendToApi) => {
 }
 
 export const getMenus = (userId) => {
-  return fetch(`http://localhost:8088/menus?_sort=date&userId=${userId}`).then(
+
+  return fetch(`https://magic-menu-wlmtp.ondigitalocean.app//menus?_sort=date&userId=${userId}`).then(
+
+
+
     (res) => res.json()
   )
 }
 
 export const getUser = (userId) => {
   return fetch(`
-    http://localhost:8088/users/?id=${userId}
+
+    https://magic-menu-wlmtp.ondigitalocean.app//users/?id=${userId}
+
    `).then((res) => res.json())
 }
 
 export const getRecipes = () => {
   return fetch(`
-  http://localhost:8088/recipes
+
+  https://magic-menu-wlmtp.ondigitalocean.app//recipes
+
   `).then((res) => res.json())
 }
 
 export const getUserFavorites = (userId) => {
   return fetch(`
-    http://localhost:8088/favorites?_expand=recipe&userId=${userId}  `).then(
+
+    https://magic-menu-wlmtp.ondigitalocean.app//favorites?_expand=recipe&userId=${userId}  `).then(
+
     (res) => res.json()
   )
 }
 
 export const postFavorite = (newFavorite) => {
-  return fetch(`http://localhost:8088/favorites`, {
+
+  return fetch(`https://magic-menu-wlmtp.ondigitalocean.app//favorites`, {
+
     method: "POST",
     headers: {
       "Content-Type": "application/json",
