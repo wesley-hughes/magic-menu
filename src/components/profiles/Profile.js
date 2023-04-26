@@ -14,7 +14,7 @@ export const Profile = () => {
 
   useEffect(() => {
 
-    fetch(`https://magic-menu-wlmtp.ondigitalocean.app//users?id=${userId}`)
+    fetch(`https://magic-menu-wlmtp.ondigitalocean.app/users?id=${userId}`)
 
       .then((response) => response.json())
       .then((data) => {
@@ -53,7 +53,7 @@ export const Profile = () => {
     event.preventDefault();
 
 
-    fetch(`https://magic-menu-wlmtp.ondigitalocean.app//users/${user.id}`, {
+    fetch(`https://magic-menu-wlmtp.ondigitalocean.app/users/${user.id}`, {
 
       method: "PUT",
       headers: {
@@ -64,7 +64,7 @@ export const Profile = () => {
       .then((response) => response.json())
       .then(() => {
 
-        fetch(`https://magic-menu-wlmtp.ondigitalocean.app//users?id=${userId}`)
+        fetch(`https://magic-menu-wlmtp.ondigitalocean.app/users?id=${userId}`)
 
           .then((response) => response.json())
           .then((data) => {

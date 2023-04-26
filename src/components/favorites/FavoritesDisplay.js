@@ -41,7 +41,7 @@ export const FavoritesDisplay = ({ searchTermState }) => {
       <Link
         onClick={() => {
 
-          fetch(`https://magic-menu-wlmtp.ondigitalocean.app//favorites/${fave.id}`, {
+          fetch(`https://magic-menu-wlmtp.ondigitalocean.app/favorites/${fave.id}`, {
 
             method: "DELETE",
           }).then(() => {

@@ -11,7 +11,7 @@ export const Login = () => {
 
     return fetch(
 
-      `https://magic-menu-wlmtp.ondigitalocean.app//users?email=${email}&password=${password}`
+      `https://magic-menu-wlmtp.ondigitalocean.app/users?email=${email}&password=${password}`
 
     )
       .then((res) => res.json())
