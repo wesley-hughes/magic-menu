@@ -39,7 +39,7 @@ export const WeekDisplay = () => {
     if (matchedFave) {
       return fetch(
 
-        `https://magic-menu-wlmtp.ondigitalocean.app//favorites/${matchedFave.id}`,
+        `https://magic-menu-wlmtp.ondigitalocean.app/favorites/${matchedFave.id}`,
 
         {
           method: "DELETE",
@@ -172,7 +172,7 @@ export const WeekDisplay = () => {
       <Link
         onClick={() => {
 
-          fetch(`https://magic-menu-wlmtp.ondigitalocean.app//menus/${menu?.id}`, {
+          fetch(`https://magic-menu-wlmtp.ondigitalocean.app/menus/${menu?.id}`, {
 
             method: "DELETE",
           }).then(() => {
